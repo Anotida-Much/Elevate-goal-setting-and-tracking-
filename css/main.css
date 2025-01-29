@@ -1,0 +1,600 @@
+/**
+* Updated: Oct 2024
+* Author: Muchinhairi Anotida
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+
+/* Global Colors - The following color variables are used throughout the App. Updating them here will change the color scheme of the entire App */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire App, including individual sections */
+  --default-color: #444444;
+  /* Default color used for the majority of the text content across the entire App */
+  --heading-color: #111111;
+  /* Color for headings, subheadings and title throughout the App */
+  --accent-color: #007bff;
+  /* Accent color that represents your brand on the App. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+.light-background {
+  --background-color: #ffffff;
+  color: black;
+}
+
+.dark-background {
+  --background-color: #1b1b1b;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #353535;
+  --contrast-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
+}
+
+.section-bg {
+  background-color: transparent;
+  padding: 160px 0;
+  position: relative;
+}
+
+.section-bg:before {
+  content: "";
+  background-color: var(--background-color);
+  position: absolute;
+  bottom: 60px;
+  top: 60px;
+  left: 0;
+  right: 0;
+  transform: skewY(-3deg);
+}
+
+.section-bg .container {
+  position: relative;
+}
+
+@media (max-width: 1199px) {
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.section-title h2,
+.section-title h3,
+.section-title h4 {
+  /* font-size: 32px; */
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.section-title h2:after,
+.section-title h3:after,
+.section-title h4:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: blue;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Home page statistical cards
+--------------------------------------------------------------*/
+.statistics-card {
+  /* background-color: #fff; */
+  padding: 15px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.statistics-card,
+h4,
+.statistics-card p {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.statistics-card:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: rgb(70, 70, 112);
+  z-index: -1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.statistics-card:hover {
+  color: #fff;
+}
+
+.statistics-card:hover:after {
+  height: 100%;
+}
+
+/*--------------------------------------------------------------
+# Motivation and CTA Section
+--------------------------------------------------------------*/
+.motivation .info-item {
+  background-color: var(--surface-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px 0 30px 0;
+}
+
+.motivation .info-item i {
+  font-size: 20px;
+  color: var(--accent-color);
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50%;
+  border: 2px dotted color-mix(in srgb, var(--accent-color), transparent 40%);
+}
+
+.motivation .info-item h3 {
+  font-size: 20px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.motivation .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.motivation .php-email-form {
+  background-color: var(--surface-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 30px;
+}
+
+@media (max-width: 575px) {
+  .motivation .php-email-form {
+    padding: 20px;
+  }
+}
+
+.motivation .php-email-form input[type="text"],
+.motivation .php-email-form input[type="email"],
+.motivation .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: var(--surface-color);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.motivation .php-email-form input[type="text"]:focus,
+.motivation .php-email-form input[type="email"]:focus,
+.motivation .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.motivation .php-email-form input[type="text"]::placeholder,
+.motivation .php-email-form input[type="email"]::placeholder,
+.motivation .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.navbar {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+}
+.navbar-nav .nav-link:hover {
+  color: #fff;
+  background-color: rgb(13, 110, 253);
+}
+
+.tab-content {
+  margin-top: 7%;
+}
+
+/* additional styles for nav */
+.dropdown-menu {
+  background-color: rgb(13, 110, 253);
+  color: #ffffff;
+}
+
+.dropdown-item {
+  color: #ffffff;
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  background-color: white;
+  color: rgb(13, 110, 253);
+}
+
+#logo-header {
+  font-size: 2ems;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.blockquote {
+  font-style: italic;
+}
+
+.blockquote-footer {
+  font-size: 14px;
+}
+
+/* set goal styles */
+/* form styling */
+.form-group {
+  margin-top: 20px;
+}
+
+.form-group label {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 600;
+}
+
+/* custom width for columns so it allow margin */
+.custom-styles {
+  min-height: 200px;
+  align-content: center;
+}
+
+/* Task list styling */
+#tasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#tasks-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#tasks-list li:last-child {
+  border-bottom: none;
+}
+
+/* Task remove button */
+#tasks-list li button {
+  float: right;
+  margin-top: -5px;
+}
+
+/* Icon styling */
+.bi {
+  font-size: 18px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.icon {
+  font-size: 25px;
+}
+
+.bi:hover {
+  color: rgb(13, 110, 253);
+}
+
+.cta-btn {
+  border: 1px solid silver;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: silver;
+}
+
+.cta-btn:hover {
+  padding: 8px 15px;
+  font-size: 15px;
+}
+
+#randomQuote {
+  font-size: large;
+}
+
+#author {
+  color: rgb(66, 9, 158);
+  font-style: italic;
+}
+
+#custom-form-bg {
+  background: linear-gradient(to bottom, darkblue, blue, purple);
+  color: blu;
+}
+
+.custom-card-position {
+  position: relative;
+}
+
+#set-btn {
+  position: absolute;
+  bottom: 5vh;
+  right: 5vh;
+}
+
+/* styles for goal completion badge  */
+.completed {
+  text-decoration: line-through;
+  color: green;
+}
+
+.text-success {
+  color: green;
+}
+
+.tasks-and-goal-container {
+  height: 18vh;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 100;
+  animation: slideDown 0.5s;
+}
+
+@keyframes slideDown {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+#no-goal-alert-btn:hover {
+  background-color: #059652;
+}
+#no-goal-alert-btn:focus {
+  padding: 5px 10px;
+}
+
+/* diabling a goal */
+.disabled {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+#bg-index {
+  z-index: 100;
+}
+
+#add-btn {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+}
+
+/* making sure all links in blue background are white by default */
+a {
+  color: white;
+}
+
+/* Notebook */
+/* note-list */
+#note-list {
+  max-height: 250px;
+  overflow: scroll;
+}
+
+#notebook-btn-custom-position {
+  position: fixed;
+  top: 30vh;
+  right: 0;
+  transform: translate(58%, -50%);
+  clip-path: inset(0 10% 0 0);
+  text-align: left;
+  transition: 1s;
+}
+
+#notebook-btn-custom-position:hover {
+  transform: translate(15%, -50%);
+  transition: 1500ms;
+  background-color: #059652;
+}
+
+#navbarSupportedContentLabel > img {
+  width: 80vh;
+}
+
+/* Adjusting the size of th Menu on extra small screens  */
+@media (max-width: 576px) {
+  #navbarSupportedContent {
+    width: 80%;
+  }
+}
+
+#current-time {
+  border-radius: 50%;
+  border-color: red;
+}
+
+/* ------------------------------------------------------------------------------------- */
+#logo-name {
+  color: blue;
+}
+
+/* Index Page - Top 3 pressing goals */
+
+#card-border {
+  border-width: 1px;
+  border-color: lightblue;
+  border-style: outset;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%) sepia(100%) saturate(700%) hue-rotate(50deg)
+    brightness(100%) contrast(100%);
+}
+
+/* custom designs for the footer */
+
+#main-footer {
+  background: linear-gradient(to bottom, #2e4053, #1a1d23);
+  padding: 20px;
+  color: white !important;
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #007bff, #34c759);
+  color: #ffffff;
+  border: none;
+  padding: 10x 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
