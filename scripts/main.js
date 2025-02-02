@@ -314,8 +314,7 @@ setInterval(calculateDays, 86400000); // 86400000 milliseconds = 1 day
 // ---------------------------------------------------------------------------------------------------------------
 
 // Account Settings
-document
-  .getElementById("deleteAccountBtn")
+document.getElementById("deleteAccountBtn")
   .addEventListener("click", function () {
     if (
       confirm(

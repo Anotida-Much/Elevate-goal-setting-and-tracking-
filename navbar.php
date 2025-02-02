@@ -82,7 +82,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdown">
               <li>
-                <a class="dropdown-item" href="users-profile.html">
+                <a class="dropdown-item" href="users-profile.php">
                   <i class="bi bi-person-circle"></i> My Profile
                 </a>
               </li>
@@ -176,7 +176,7 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdownHorizontal">
             <!-- Dropdown items -->
             <li>
-              <a class="dropdown-item" href="users-profile.html">
+              <a class="dropdown-item" href="users-profile.php">
                 <i class="bi bi-person-circle"></i> My Profile
               </a>
             </li>

@@ -375,15 +375,15 @@ require_once 'config/auth.php';
   <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/quill/quill.js"></script>
-  <script src="./scripts/live-clock.js"></script>
-  <script src="./scripts/greeting.js"></script>
+  <script src="vendor/typed.js/typed.umd.js"></script>
 
   <script src="./scripts/main.js"></script>
   <script src="./scripts/index.js"></script>
   <script src="./scripts/toasts.js"></script>
   <script src="./scripts/notebook.js"></script>
   <script src="./scripts/theme.js"></script>
-  <script src="vendor/typed.js/typed.umd.js"></script>
+  <script src="./scripts/live-clock.js"></script>
+  <script src="./scripts/greeting.js"></script>
 
 
 
