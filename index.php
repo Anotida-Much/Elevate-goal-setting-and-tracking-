@@ -10,9 +10,9 @@ require_once 'config/auth.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
+    content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
   <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
-  <meta name="author" keywords="Anotida Muchinhairi">
+  <meta name="author" content="Anotida Muchinhairi">
 
   <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
   <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
@@ -36,6 +36,9 @@ require_once 'config/auth.php';
 
   <!-- Goals Section -->
   <section id="home-page" class="section pb-0" style="margin-top: 0px !important;">
+    <!-- Hidden container to store username -->
+    <div id="username" data-username="<?php echo $_SESSION['username']; ?>" style="display: none;"></div>
+
     <!-- Greeting and Live Clock -->
     <div class="row">
       <span id="typed-container" class="col">
@@ -46,31 +49,6 @@ require_once 'config/auth.php';
         <p id="live-clock"></p>
       </span>
     </div>
-
-    <script src="vendor/typed.js/typed.umd.js"></script>
-    <script src="./scripts/live-clock.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const hour = new Date().getHours();
-        const username = "<?php echo $_SESSION['username']; ?>" // Get username from PHP
-        let greeting = "Hello!"; // Default greeting
-
-        if (hour >= 1 && hour < 12) {
-          greeting = `<span class="lead fs-5"> Good morning ${username}</span>`;
-        } else if (hour >= 12 && hour < 18) {
-          greeting = `<span class="lead fs-5"> Good afternoon ${username}</span>`;
-        } else {
-          greeting = `<span class="lead fs-5"> Good evening ${username}</span>`;
-        }
-
-        const typed = new Typed('#typed', {
-          strings: [greeting],
-          typeSpeed: 30,
-          showCursor: false
-        });
-      });
-    </script>
 
 
     <!-- Goal Statistics Section -->
@@ -397,12 +375,15 @@ require_once 'config/auth.php';
   <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/quill/quill.js"></script>
+  <script src="./scripts/live-clock.js"></script>
+  <script src="./scripts/greeting.js"></script>
 
   <script src="./scripts/main.js"></script>
   <script src="./scripts/index.js"></script>
   <script src="./scripts/toasts.js"></script>
   <script src="./scripts/notebook.js"></script>
   <script src="./scripts/theme.js"></script>
+  <script src="vendor/typed.js/typed.umd.js"></script>
 
 
 

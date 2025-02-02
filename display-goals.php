@@ -23,19 +23,15 @@
     <?php
     require_once './config/display-goals-config.php';
     require_once './navbar.php';
-
     ?>
-
 
     <div class="row position-relative mt-5 pt-5 me-auto">
         <div class="d-flex align-items-center justify-content-end">
             <div class="col-auto search-bar position-relative me-5 w-50">
-                <input type="search" class="form-control" name="query" placeholder="Search goals..."><i
-                    class="bi bi-search position-absolute top-50 end-0 translate-middle"></i>
+                <input type="search" class="form-control" name="query" placeholder="Search goals..."><i class="bi bi-search position-absolute top-50 end-0 translate-middle"></i>
             </div>
 
-
-
+            <!-- Filter Buttons -->
             <div class="col-auto mx-2 filter-buttons dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Filter by Status
@@ -49,7 +45,7 @@
                 </ul>
             </div>
 
-            <!-- Sorting Section -->
+            <!-- Sort Buttons -->
             <div class="col-auto sort-buttons dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Sort by
@@ -65,11 +61,10 @@
     </div>
 
     <!-- Global Progress Bar -->
-    <div class="global-progress container mt-2">
+    <div class="global-progress container mt-2 mt-5">
         <h3>Overall Progress</h3>
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                style="width: 0%;"></div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
         </div>
     </div>
     <!-- Goal Container -->
@@ -91,39 +86,19 @@
                             </div>
                             <!-- Dropdown menu content -->
                             <div class="dropdown">
-                                <button class="btn btn-outline-primary" type="button" id="goalOptions"
-                                    data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Options">
+                                <button class="btn btn-outline-primary" type="button" id="goalOptions" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Options">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
                                 <ul class="dropdown-menu text-light" aria-labelledby="goalOptions">
-
-                                    <li><a class="dropdown-item" href="#" aria-label="add-tasks">
-                                            <i class="bi bi-plus-circle"></i>Add More Tasks</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="pause">
-                                            <i class="bi bi-pause-circle"></i>Pause Goal</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="resume">
-                                            <i class="bi bi-arrow-clockwise"></i>Resume Goal</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="reschedule">
-                                            <i class="bi bi-calendar-plus"></i>Reschedule Goal</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="mark-complete">
-                                            <i class="bi bi-check-circle"></i>Mark as complete</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="share">
-                                            <i class="bi bi-share"></i>Share Goal</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#" aria-label="update">
-                                            <i class="bi bi-pencil-square"></i>Edit Goal</a>
-                                    </li>
-                                    <li><a class="dropdown-item text-warning" href="#" aria-label="missed">
-                                            <i class="bi bi-exclamation-circle"></i>Mark As Missed</a>
-                                    </li>
-                                    <li><a class="dropdown-item text-danger" href="#" aria-label="delete">
-                                            <i class="bi bi-trash"></i>Delete Goal</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="#" aria-label="add-tasks"><i class="bi bi-plus-circle"></i>Add More Tasks</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="pause"><i class="bi bi-pause-circle"></i>Pause Goal</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="resume"><i class="bi bi-arrow-clockwise"></i>Resume Goal</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="reschedule"><i class="bi bi-calendar-plus"></i>Reschedule Goal</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="mark-complete"><i class="bi bi-check-circle"></i>Mark as complete</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="share"><i class="bi bi-share"></i>Share Goal</a></li>
+                                    <li><a class="dropdown-item" href="#" aria-label="update"><i class="bi bi-pencil-square"></i>Edit Goal</a></li>
+                                    <li><a class="dropdown-item text-warning" href="#" aria-label="missed"><i class="bi bi-exclamation-circle"></i>Mark As Missed</a></li>
+                                    <li><a class="dropdown-item text-danger" href="#" aria-label="delete"><i class="bi bi-trash"></i>Delete Goal</a></li>
                                 </ul>
                             </div>
                         </header>
@@ -136,9 +111,7 @@
                                     <ul class="task-list list-unstyled">
                                         <?php foreach ($data['tasks'] as $task) { ?>
                                             <li class="task <?= $task['completed'] ? 'completed' : '' ?>">
-                                                <input type="checkbox" id="<?= $task['id'] ?>"
-                                                    aria-label="<?= $task['task_name'] ?>" <?= $task['completed'] ? 'checked'
-                                                                                                : '' ?>>
+                                                <input type="checkbox" id="<?= $task['id'] ?>" aria-label="<?= $task['task_name'] ?>" <?= $task['completed'] ? 'checked' : '' ?>>
                                                 <label for="<?= $task['id'] ?>">
                                                     <?= $task['task_name'] ?>
                                                 </label>
@@ -147,28 +120,19 @@
                                     </ul>
                                 </div>
                                 <div class="progress col-10 offset-1">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 0%;">
-                                        0%
-                                    </div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;">0%</div>
                                 </div>
                             </div>
                         </section>
                         <footer class="card-footer d-flex justify-content-between align-items-center w-100">
                             <div class="col">
-                                <span>
-                                    <?= $data['goal']['goal_category'] ?>
-                                </span>
+                                <span><?= $data['goal']['goal_category'] ?></span>
                             </div>
                             <div class="col">
-                                <span>Due Date:
-                                    <?= $data['goal']['target_date'] ?>
-                                </span>
+                                <span>Due Date: <?= $data['goal']['target_date'] ?></span>
                             </div>
                             <div class="col" id="goal-status">
-                                <span class="badge float-end bg-info w-75 py-3">
-                                    <?= $data['goal_status'] ?>
-                                </span>
+                                <span class="badge float-end bg-info w-75 py-3"><?= $data['goal_status'] ?></span>
                             </div>
                         </footer>
                     </article>

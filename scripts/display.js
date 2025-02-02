@@ -173,3 +173,34 @@ const updateUI = (action, goalId) => {
       break;
   }
 };
+
+ // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Isotope on the goal container
+            var iso = new Isotope('.row', {
+                itemSelector: '.card',
+                layoutMode: 'fitRows'
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var filterValue = this.getAttribute('data-filter');
+                    iso.arrange({
+                        filter: filterValue
+                    });
+                });
+            });
+
+            // Sort buttons
+            document.querySelectorAll('.dropdown-item[data-sort-by]').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var sortByValue = this.getAttribute('data-sort-by');
+                    var sortAscending = (sortByValue === 'original-order') ? true : false;
+                    iso.arrange({
+                        sortBy: sortByValue,
+                        sortAscending: sortAscending
+                    });
+                });
+            });
+        });

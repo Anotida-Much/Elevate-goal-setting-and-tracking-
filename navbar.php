@@ -17,6 +17,7 @@
         <h5 class="offcanvas-title" id="navbarSupportedContentLabel">
           <img src="img/logo.jpg" class="mh-20 w-100" />
         </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav ms-auto my-2 mb-lg-0">
@@ -28,18 +29,18 @@
           </li>
           <!-- Goal Management Dropdown -->
           <li class="nav-item dropdown my-2">
-            <span class="nav-link dropdown-toggle" href="#" id="goalManagementDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Management">
+            <a class="nav-link dropdown-toggle" href="#" id="goalManagementDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <i class="m-3 bi bi-clipboard-check"></i> Goal Management
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="goalManagementDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="goalManagementDropdown">
               <li>
-                <a class="dropdown-item" href="./goal-setting.php">
+                <a class="dropdown-item" href="goal-setting.php">
                   <i class="bi bi-calendar-plus"></i> Set Goal
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="./display-goals.php">
+                <a class="dropdown-item" href="display-goals.php">
                   <i class="bi bi-list"></i> View All Goals
                 </a>
               </li>
@@ -52,11 +53,11 @@
           </li>
           <!-- Support Dropdown -->
           <li class="nav-item dropdown">
-            <span class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" aria-label="Support">
+            <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <i class="m-3 bi bi-chat-text"></i> Support
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="supportDropdown">
               <li>
                 <a class="dropdown-item" href="#online-support">
                   <i class="bi bi-headset"></i> Online Support
@@ -76,11 +77,11 @@
           </li>
           <!-- Account Settings Dropdown -->
           <li class="nav-item dropdown">
-            <span class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account Settings">
+            <a class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <i class="m-3 bi bi-person-circle"></i> Account Settings
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="accountSettingsDropdown">
               <li>
                 <a class="dropdown-item" href="users-profile.php">
                   <i class="bi bi-person-circle"></i> My Profile
@@ -92,22 +93,20 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="mailto:muchinhairiano@gmail.com">
+                <a class="dropdown-item" href="mailto:support@example.com">
                   <i class="bi bi-question-circle"></i> Need Help
                 </a>
               </li>
-
             </ul>
           </li>
           <li>
-            <a class="nav-link logout-btn" href="#" id="logout-button1">
+            <a class="nav-link" href="#" id="logout-button">
               <i class="m-3 bi bi-box-arrow-right"></i> Logout
             </a>
           </li>
         </ul>
       </div>
     </div>
-
 
     <!-- Horizontal Menu for Large Screens -->
     <div class="collapse navbar-collapse d-lg-block d-none" id="navbarSupportedContentHorizontal">
@@ -120,11 +119,11 @@
         </li>
         <!-- Goal Management Dropdown -->
         <li class="nav-item dropdown">
-          <span class="nav-link dropdown-toggle" href="#" id="goalManagementDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Management">
+          <a class="nav-link dropdown-toggle" href="#" id="goalManagementDropdownHorizontal" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="m-3 bi bi-clipboard-check"></i> Goal Management
-          </span>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="goalManagementDropdownHorizontal">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="goalManagementDropdownHorizontal">
             <li>
               <a class="dropdown-item" href="goal-setting.php">
                 <i class="bi bi-calendar-plus"></i> Set Goal
@@ -144,11 +143,11 @@
         </li>
         <!-- Support Dropdown -->
         <li class="nav-item dropdown">
-          <span class="nav-link dropdown-toggle" href="#" id="supportDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Support">
+          <a class="nav-link dropdown-toggle" href="#" id="supportDropdownHorizontal" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="m-3 bi bi-chat-text"></i> Support
-          </span>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdownHorizontal">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="supportDropdownHorizontal">
             <!-- Dropdown items -->
             <li>
               <a class="dropdown-item" href="#online-support">
@@ -169,11 +168,11 @@
         </li>
         <!-- Account Settings Dropdown -->
         <li class="nav-item dropdown">
-          <span class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account Settings">
+          <a class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdownHorizontal" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="m-3 bi bi-person-circle"></i> Account Settings
-          </span>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdownHorizontal">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="accountSettingsDropdownHorizontal">
             <!-- Dropdown items -->
             <li>
               <a class="dropdown-item" href="users-profile.php">
@@ -186,12 +185,12 @@
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="mailto:muchinhairiano@gmail.com">
+              <a class="dropdown-item" href="mailto:support@example.com">
                 <i class="bi bi-question-circle"></i> Need Help
               </a>
             </li>
             <li>
-              <a class="dropdown-item logout-btn" href="#" id="logout-button2">
+              <a class="dropdown-item" href="#" id="logout-button">
                 <i class="bi bi-box-arrow-right"></i> Logout
               </a>
             </li>

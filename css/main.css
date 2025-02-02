@@ -598,3 +598,10 @@ a {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Greeting styles */
+ .gradient-text {
+    background: linear-gradient(to right, blue, rgb(255, 230, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
