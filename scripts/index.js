@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!response.ok) {
       throw new Error("Network error");
     }
-    const data = await response.json();
 
+    const data = await response.json();
     updateHtmlElementsWithStatistics(data);
   } catch (error) {
     console.error("Error:", error);
@@ -25,14 +25,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Home page statistics
 function updateHtmlElementsWithStatistics(data) {
-  const total_goals =
-    data.MISSED + data.COMPLETED + data.IN_PROGRESS + data.ON_HOLD;
-  document.getElementById("goals-set").textContent = total_goals;
-  document.getElementById("goals-missed").textContent = data.MISSED;
-  document.getElementById("goals-achieved").textContent = data.COMPLETED;
-  document.getElementById("goals-in-progress").textContent = data.IN_PROGRESS;
-  document.getElementById("goals-on-hold").textContent = data.ON_HOLD;
+  const { MISSED, COMPLETED, IN_PROGRESS, ON_HOLD } = data;
+  const totalGoals = MISSED + COMPLETED + IN_PROGRESS + ON_HOLD;
+
+  const elements = {
+    "goals-set": totalGoals,
+    "goals-missed": MISSED,
+    "goals-achieved": COMPLETED,
+    "goals-in-progress": IN_PROGRESS,
+    "goals-on-hold": ON_HOLD,
+  };
+
+  for (const [id, value] of Object.entries(elements)) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.textContent = value;
+    }
+  }
 }
-
-// -------------------------------------------------------------------------------------------------------------
-

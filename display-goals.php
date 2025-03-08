@@ -51,10 +51,10 @@
                     Sort by
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                    <li><a class="dropdown-item" href="#" data-sort-by="original-order">Default Order</a></li>
-                    <li><a class="dropdown-item" href="#" data-sort-by="due-date">Due Date</a></li>
-                    <li><a class="dropdown-item" href="#" data-sort-by="progress">Progress</a></li>
-                    <li><a class="dropdown-item" href="#" data-sort-by="starting-date">Starting Date</a></li>
+                    <li><a class="dropdown-item" href="#">Default Order</a></li>
+                    <li><a class="dropdown-item" href="#">Due Date</a></li>
+                    <li><a class="dropdown-item" href="#">Progress</a></li>
+                    <li><a class="dropdown-item" href="#">Starting Date</a></li>
                 </ul>
             </div>
         </div>
@@ -142,7 +142,6 @@
     </main>
 
     <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-    <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="scripts/display.js"></script>
     <script src="./scripts/theme.js"></script>
 

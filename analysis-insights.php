@@ -8,7 +8,7 @@
         content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
     <meta name="keywords"
         content="goal setting,goal analysis, goal tracking, productivity, personal development, Elevate">
-    <meta name="author" keywords="Anotida Muchinhairi">
+    <meta name="author" content="Anotida Muchinhairi">
 
     <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
@@ -23,7 +23,7 @@
     <?php include "navbar.php" ?>
 
     <div class="container-fluid mt-5 p-5">
-        <div class="row ">
+        <div class="row">
             <div class="col-sm-12 col-md-4 mx-auto my-3 order-sm-2 order-md-1">
                 <div class="card">
                     <div class="card-body">

@@ -3,21 +3,20 @@ require_once 'db.php';
 require_once 'auth.php';
 require_once 'validation.php';
 
-
-
 // session_start(); 
 $user_id = $_SESSION['user_id'];
 
+header('Content-Type: application/json');
+
 // Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input = $_POST;
     $errors = validateInput($input);
 
     // Check for errors
     if (count($errors) > 0) {
-        foreach ($errors as $error) {
-            handleError($error);
-        }
+        echo json_encode(['status' => 'error', 'errors' => $errors]);
+        exit;
     } else {
         try {
             // Insert goal into database
@@ -81,18 +80,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             $stmt->close();
             $conn->close();
 
-            $toastMessage = "Goal set successfully!";
-            echo  $toastMessage;
-
-?>
-
-        <?php
-
+            echo json_encode(['status' => 'success', 'message' => 'Goal set successfully!']);
         } catch (Exception $e) {
-            echo "<p style='color: red;'>Database error: " . $e->getMessage() . "</p>";
+            echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
         }
     }
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
 }
-        ?>
+?>
 
-            

@@ -1,10 +1,17 @@
 function showTime() {
   const currentTime = new Date();
-  const hours = currentTime.getHours().toString().padStart(2, "0");
-  const minutes = currentTime.getMinutes().toString().padStart(2, "0");
-  const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+  const formatTimeUnit = (unit) => unit.toString().padStart(2, "0");
 
-  document.getElementById("live-clock").innerHTML = `${hours}:${minutes}:${seconds}`;
+  const hours = formatTimeUnit(currentTime.getHours());
+  const minutes = formatTimeUnit(currentTime.getMinutes());
+  const seconds = formatTimeUnit(currentTime.getSeconds());
+
+  document.getElementById(
+    "live-clock"
+  ).textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-setInterval(showTime, 1000); // Update every 1 second
+document.addEventListener("DOMContentLoaded", () => {
+  showTime(); // Initial call to display the time immediately
+  setInterval(showTime, 1000); // Update every 1 second
+});

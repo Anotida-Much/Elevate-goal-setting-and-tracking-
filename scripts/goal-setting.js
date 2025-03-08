@@ -1,33 +1,44 @@
-const addTaskBtn = document.getElementById("add-task-btn");
-const tasksList = document.getElementById("tasks-list");
-const newTaskInput = document.getElementById("new-task");
-const tasksInput = document.getElementById("tasks");
+document.addEventListener("DOMContentLoaded", () => {
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const tasksList = document.getElementById("tasks-list");
+  const newTaskInput = document.getElementById("new-task");
+  const tasksInput = document.getElementById("tasks");
 
-let tasks = [];
+  let tasks = [];
 
-addTaskBtn.addEventListener("click", addTask);
-
-function addTask() {
-  const taskText = newTaskInput.value.trim();
-  if (taskText) {
-    tasks.push(taskText);
-    renderTasks();
-    newTaskInput.value = "";
-  }
-}
-
-function renderTasks() {
-  tasksList.innerHTML = "";
-  tasks.forEach((task, index) => {
-    const taskElement = document.createElement("li");
-    taskElement.textContent = task;
-    taskElement.innerHTML += ` <button class="btn btn-sm btn-danger" onclick="removeTask(${index})">Remove</button>`;
-    tasksList.appendChild(taskElement);
+  addTaskBtn.addEventListener("click", addTask);
+  newTaskInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") addTask();
   });
-  tasksInput.value = JSON.stringify(tasks);
-}
 
-function removeTask(index) {
-  tasks.splice(index, 1);
-  renderTasks();
-}
+  function addTask() {
+    const taskText = newTaskInput.value.trim();
+    if (taskText) {
+      tasks.push(taskText);
+      renderTasks();
+      newTaskInput.value = "";
+    }
+  }
+
+  function renderTasks() {
+    tasksList.innerHTML = tasks
+      .map(
+        (task, index) => `
+        <li>
+          ${task} 
+          <button class="btn btn-sm btn-danger" data-index="${index}">Remove</button>
+        </li>
+      `
+      )
+      .join("");
+    tasksInput.value = JSON.stringify(tasks);
+    tasksList.querySelectorAll("button").forEach((button) => {
+      button.addEventListener("click", () => removeTask(button.dataset.index));
+    });
+  }
+
+  function removeTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+  }
+});

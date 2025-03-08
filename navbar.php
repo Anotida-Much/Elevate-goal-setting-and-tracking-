@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm lh-lg z-index-2000">
   <div class="container-fluid">
     <!-- Hamburger Menu Icon -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Profile Information -->
@@ -11,10 +11,10 @@
       <span><b>ELEVATE</b></span>
     </div>
     <!-- Offcanvas Menu -->
-    <div class="offcanvas offcanvas-start d-lg-none w-xs-50" tabindex="-1" id="navbarSupportedContent"
-      aria-labelledby="navbarSupportedContentLabel">
+    <div class="offcanvas offcanvas-start d-lg-none w-xs-50" tabindex="-1" id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header position-relative">
-        <h5 class="offcanvas-title" id="navbarSupportedContentLabel">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
           <img src="img/logo.jpg" class="mh-20 w-100" />
         </h5>
       </div>
@@ -22,7 +22,7 @@
         <ul class="navbar-nav ms-auto my-2 mb-lg-0">
           <!-- Primary Menu Items -->
           <li class="nav-item">
-            <a class="nav-link" href="index.php" aria-selected="true">
+            <a class="nav-link" href="/Elevate/index.php" aria-selected="true">
               <i class="m-3 bi bi-house-door"></i> Home
             </a>
           </li>
@@ -34,17 +34,17 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="goalManagementDropdown">
               <li>
-                <a class="dropdown-item" href="./goal-setting.php">
+                <a class="dropdown-item" href="/Elevate/goal-setting.php">
                   <i class="bi bi-calendar-plus"></i> Set Goal
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="display-goals.php">
+                <a class="dropdown-item" href="/Elevate/display-goals.php">
                   <i class="bi bi-list"></i> View All Goals
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="analysis-insights.php">
+                <a class="dropdown-item" href="/Elevate/analysis-insights.php">
                   <i class="bi bi-list-check"></i> Analysis and Insights
                 </a>
               </li>
@@ -82,7 +82,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdown">
               <li>
-                <a class="dropdown-item" href="users-profile.php">
+                <a class="dropdown-item" href="/Elevate/users-profile.php">
                   <i class="bi bi-person-circle"></i> My Profile
                 </a>
               </li>
@@ -96,7 +96,6 @@
                   <i class="bi bi-question-circle"></i> Need Help
                 </a>
               </li>
-
             </ul>
           </li>
           <li>
@@ -107,7 +106,6 @@
         </ul>
       </div>
     </div>
-
 
     <!-- Horizontal Menu for Large Screens -->
     <div class="collapse navbar-collapse d-lg-block d-none" id="navbarSupportedContentHorizontal">
@@ -139,8 +137,8 @@
               <a class="dropdown-item" href="analysis-insights.php">
                 <i class="bi bi-list-check"></i> Analysis and Insights
               </a>
-            </li>
-          </ul>
+            </ul>
+          </li>
         </li>
         <!-- Support Dropdown -->
         <li class="nav-item dropdown">
@@ -164,8 +162,8 @@
               <a class="dropdown-item" href="#feedback">
                 <i class="bi bi-chat-text"></i> Feedback
               </a>
-            </li>
-          </ul>
+            </ul>
+          </li>
         </li>
         <!-- Account Settings Dropdown -->
         <li class="nav-item dropdown">

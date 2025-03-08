@@ -2,129 +2,120 @@ document.addEventListener("DOMContentLoaded", function () {
   // Displaying Quotes
   const quotes = [
     {
-      saying: "Believe you can  and you are halfway there",
-      author: "Theadore Roosevelt",
+      saying: "Believe you can and you're halfway there.",
+      author: "Theodore Roosevelt",
     },
     {
       saying:
-        "Set specific, measurable, and achievable goals to boost your productivity",
+        "Set specific, measurable, and achievable goals to boost your productivity.",
       author: "Unknown",
     },
     {
-      saying: "You miss 100% of your shots you don't take",
-      author: "Wyne Gretzky",
+      saying: "You miss 100% of the shots you don't take.",
+      author: "Wayne Gretzky",
     },
     {
-      saying: "The only way to do great is love what you do",
+      saying: "The only way to do great work is to love what you do.",
       author: "Steve Jobs",
     },
     {
       saying:
-        "You are never too old to set another goal or to dream a new dream",
-      author: "C.S Lewis",
+        "You are never too old to set another goal or to dream a new dream.",
+      author: "C.S. Lewis",
     },
     {
-      saying: "Do something today that your future self will thank you for",
+      saying: "Do something today that your future self will thank you for.",
       author: "Unknown",
     },
     {
       saying:
-        "You dont have to be great to start, but you have start to be great",
+        "You don't have to be great to start, but you have to start to be great.",
       author: "Zig Ziglar",
     },
     {
-      saying: "Keep your eyes on the stars and your feet on the ground",
-      author: "Theadore Roosevelt",
+      saying: "Keep your eyes on the stars and your feet on the ground.",
+      author: "Theodore Roosevelt",
     },
     {
       saying:
-        "Success is not final, failure is not fatal. It is the courage to cntinue that counts",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
       author: "Winston Churchill",
     },
     {
       saying:
-        "Stay positive and focused: Mantain a positive mindset and stay focused on your goals",
+        "Stay positive and focused: Maintain a positive mindset and stay focused on your goals.",
       author: "Unknown",
     },
     {
       saying:
-        "Break tasks into smaller steps: Divide large tasks into smaller, manageable steps to mantain momentum",
+        "Break tasks into smaller steps: Divide large tasks into smaller, manageable steps to maintain momentum.",
       author: "Unknown",
     },
     {
-      saying: "Don't watch  the clock, do what it does. Keep going",
+      saying: "Don't watch the clock; do what it does. Keep going.",
       author: "Sam Levenson",
     },
     {
       saying:
-        "Celebrate your small wins to stay motivated and focused on your long-term goals",
+        "Celebrate your small wins to stay motivated and focused on your long-term goals.",
       author: "Unknown",
     },
     {
       saying:
-        "Set <abbr>SMART</abbr> goals: Make your goals Specific, Measurable, Achievable, Relevent, and Time-bound",
+        "Set SMART goals: Make your goals Specific, Measurable, Achievable, Relevant, and Time-bound.",
       author: "Unknown",
     },
     {
       saying:
-        "Stay positive and focused: Mantain a positive mindset and stay focused on your goals",
-      author: "Unknown",
-    },
-    {
-      saying:
-        "Learn from failures: Use failures as oppotunities to learn and grow",
+        "Learn from failures: Use failures as opportunities to learn and grow.",
       author: "Unknown",
     },
     {
       saying: "It takes courage to grow up and become who you really are.",
-      author: "E.E.Cummings",
+      author: "E.E. Cummings",
     },
     {
       saying:
         "Your self-worth is determined by you. You don't have to depend on someone telling you who you are.",
-      author: " Beyonce",
+      author: "Beyonce",
     },
     {
       saying: "Nothing is impossible. The word itself says 'I'm possible!'",
-      author: " Audrey Hepburn",
+      author: "Audrey Hepburn",
     },
     {
       saying:
         "Keep your face always toward the sunshine, and shadows will fall behind you.",
       author: "Walt Whitman",
     },
-
     {
       saying:
-        "You have brains in your head.You have feet in your shoes.You can steer yourself any direction you choose.You're on your own. And you know what you know. And you are the guy who'll decide where to go.",
+        "You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.",
       author: "Dr. Seuss",
     },
     {
       saying: "Attitude is a little thing that makes a big difference.",
-      author: " Winston Churchill",
+      author: "Winston Churchill",
     },
     {
       saying:
         "To bring about change, you must not be afraid to take the first step. We will fail when we fail to try.",
-      author: " Rosa Parks",
+      author: "Rosa Parks",
     },
     {
       saying:
         "All our dreams can come true, if we have the courage to pursue them.",
       author: "Walt Disney",
     },
-
     {
       saying:
         "Don't sit down and wait for the opportunities to come. Get up and make them.",
-      author: "Madam C.J.Walker",
+      author: "Madam C.J. Walker",
     },
-
     {
       saying: "Champions keep playing until they get it right.",
       author: "Billie Jean King",
     },
-
     {
       saying:
         "I am lucky that whatever fear I have inside me, my desire to win is always stronger.",
@@ -132,18 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       saying:
-        "You are never too old to set another goal or to dream a new dream.",
-      author: "C.S. Lewis",
-    },
-
-    {
-      saying:
         "It is during our darkest moments that we must focus to see the light.",
       author: "Aristotle",
-    },
-    {
-      saying: "Believe you can and you're halfway there.",
-      author: "Theodore Roosevelt",
     },
     {
       saying: "Life shrinks or expands in proportion to one’s courage.",
@@ -167,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
       saying: "Real change, enduring change, happens one step at a time.",
       author: "Ruth Bader Ginsburg",
     },
-
     {
       saying:
         "All dreams are within reach. All you have to do is keep moving towards them.",
@@ -247,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Optimism is a happiness magnet. If you stay positive, good things and good people will be drawn to you.",
       author: "Mary Lou Retton",
     },
-
     {
       saying:
         "You just gotta keep going and fighting for everything, and one day you’ll get to where you want.",
@@ -260,22 +239,20 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       saying:
         "No matter how far away from yourself you may have strayed, there is always a path back. You already know who you are and how to fulfill your destiny.",
-      author: "Oprah Winfrey ",
+      author: "Oprah Winfrey",
     },
   ];
 
-  let randomNumber = Math.floor(Math.random() * quotes.length);
-  const randomSaying = quotes[randomNumber].saying;
-  const author = quotes[randomNumber].author;
-  document.getElementById("randomQuote").innerHTML = `${randomSaying}`;
-  document.getElementById("author").innerHTML = `~${author}`;
-  setInterval(() => {
-    let randomNumber = Math.floor(Math.random() * quotes.length);
+  function displayRandomQuote() {
+    const randomNumber = Math.floor(Math.random() * quotes.length);
     const randomSaying = quotes[randomNumber].saying;
     const author = quotes[randomNumber].author;
     document.getElementById("randomQuote").innerHTML = `${randomSaying}`;
     document.getElementById("author").innerHTML = `~${author}`;
-  }, 60000);
+  }
+
+  displayRandomQuote();
+  setInterval(displayRandomQuote, 60000);
 
   // Initialize AOS
   AOS.init();
@@ -284,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Date and Time
 const dateInfo = document.getElementById("date-info");
 const todayDt = document.getElementById("today");
-// Function to calculate days passed and left in the year
+
 function calculateDays() {
   const today = new Date();
   const year = today.getFullYear();
@@ -296,88 +273,76 @@ function calculateDays() {
   );
   const daysLeft = Math.floor((lastDayOfYear - today) / (1000 * 60 * 60 * 24));
   todayDt.textContent = `${today.toLocaleDateString()}`;
-  // Display today's date, days passed, and days left
   dateInfo.innerHTML = `
-      <div class="row justify-content-between">
-        <p class="col-auto">Days Gone: <strong>${daysPassed}</strong></p>
-        <p class="col-auto">Days Left: <strong>${daysLeft}</strong></p>
-      </div>
-    `;
+    <div class="row justify-content-between">
+      <p class="col-auto">Days Gone: <strong>${daysPassed}</strong></p>
+      <p class="col-auto">Days Left: <strong>${daysLeft}</strong></p>
+    </div>
+  `;
 }
-// Call the function to update the date info
+
 document.addEventListener("DOMContentLoaded", () => {
   calculateDays();
 });
-// Update the date info every day
 setInterval(calculateDays, 86400000); // 86400000 milliseconds = 1 day
 
-// ---------------------------------------------------------------------------------------------------------------
-
 // Account Settings
-document.getElementById("deleteAccountBtn")
+document
+  .getElementById("deleteAccountBtn")
   .addEventListener("click", function () {
     if (
       confirm(
-        "Are you sure you want to delete your account? All your goals will be deletd as well. This action cannot be undone."
+        "Are you sure you want to delete your account? All your goals will be deleted as well. This action cannot be undone."
       )
     ) {
       deleteAccount();
     }
   });
 
-function deleteAccount() {
-  fetch("./config/account-settings.php", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        window.showToast(data.message);
-        window.location.href = "sign-up.php";
-      } else {
-        console.error("Error:", data.message);
-        alert("Error deleting account: " + data.message);
-      }
-    })
-    .catch((error) => {
-      window.showToast(
-        "danger",
-        "There was a problem with the fetch operation:"
-      );
+async function deleteAccount() {
+  try {
+    const response = await fetch("./config/account-settings.php", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    const data = await response.json();
+    if (data.status === "success") {
+      window.showToast(data.message);
+      window.location.href = "sign-up.php";
+    } else {
+      console.error("Error:", data.message);
+      alert("Error deleting account: " + data.message);
+    }
+  } catch (error) {
+    window.showToast(
+      "danger",
+      "There was a problem with the fetch operation: " + error.message
+    );
+  }
 }
 
 // Set the idle timeout (10 minutes)
 const timeout = 10 * 60 * 1000;
-
-// Set the timer
 let timer = setTimeout(logoutUser, timeout);
 
-// Logout button click event
 document.getElementById("logout-button1").addEventListener("click", logoutUser);
 document.getElementById("logout-button2").addEventListener("click", logoutUser);
 
-// Detect user activity and reset the timer
 document.addEventListener("mousemove", resetTimer);
 document.addEventListener("keydown", resetTimer);
 document.addEventListener("scroll", resetTimer);
 document.addEventListener("click", resetTimer);
 
-// Reset the timer when user activity is detected
 function resetTimer() {
   clearTimeout(timer);
   timer = setTimeout(logoutUser, timeout);
 }
 
-// Log out the user when the timer expires
 async function logoutUser() {
   try {
-    // Send a request to the server to invalidate the user's session
     const response = await fetch("./config/logout.php");
-
     if (response.ok) {
       window.location.href = "./login.php";
     } else {

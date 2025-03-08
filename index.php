@@ -239,7 +239,7 @@ require_once 'config/auth.php';
   <section id="motivation" class="motivation section my-0 py-5 gy-0">
 
     <!-- Section Title -->
-    <div class="container section-title">
+    <div class="container section-title text-center">
       <h3>Share and Motivate</h3>
       <p>Find motivation in quotes, tips and personl stories. Share your own expriences to inspire others.</p>
     </div><!-- End Section Title -->
@@ -253,7 +253,7 @@ require_once 'config/auth.php';
             <div class="col-12 px-0">
               <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                 data-aos-delay="200">
-                <div class="m-2">
+                <div class="m-4">
                   <h4 class="text-info">Daily Inspirations</h4>
                   <blockquote class="d-flex justify-content-between">
                     <p class="lead" id="randomQuote"></p>
@@ -267,7 +267,7 @@ require_once 'config/auth.php';
             </div><!-- End Daily Motivation Section -->
 
             <!-- Call To Action Section -->
-            <div class="col-12 section dark-background w-100 border rounded shadow-lg">
+            <div class="col-12 section w-100 border rounded shadow-lg" id="cta-section">
               <div class="d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                 data-aos-delay="300">
                 <div class="row p-4" data-aos="zoom-in" data-aos-delay="100">
@@ -325,6 +325,7 @@ require_once 'config/auth.php';
 
             </div>
           </form>
+
         </div><!-- End Contact Form -->
       </div>
     </div>
@@ -375,7 +376,8 @@ require_once 'config/auth.php';
   <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/quill/quill.js"></script>
-  <script src="vendor/typed.js/typed.umd.js"></script>
+    <script src="vendor/chart.js/chart.umd.js"></script>
+    <script src="vendor/typed.js/typed.umd.js"></script>
 
   <script src="./scripts/main.js"></script>
   <script src="./scripts/index.js"></script>

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
+    <meta name="description" content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
     <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
     <meta name="author" content="Anotida Muchinhairi">
     <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
@@ -21,19 +20,18 @@
     <?php require_once 'navbar.php'; ?>
 
     <div class="container mt-5 pt-5">
-        <div class="bg-light shadow-lg mx-auto my-4 border-bottom border-5 border-primary">
-            <div class="section-title p-3 text-center bg-primary">
+        <div class="bg-light shadow-lg mx-auto my-4 border-bottom border-5 border-primary rounded">
+            <div class="section-title p-3 text-center bg-primary rounded-top">
                 <h3 class="text-center text-light">Create a New Goal</h3>
-                <p class="lead text-light">Setting clear goals helps you focus on what's important. Please provide the
-                    following information to create your goal.</p>
+                <p class="lead text-light">Setting clear goals helps you focus on what's important. Please provide the following information to create your goal.</p>
             </div>
 
-            <form id="goal-form" method="POST" action="./config/goal-setting-config.php">
+            <form id="goal-form" method="POST" onsubmit="handleFormSubmit(event)">
                 <div class="m-5">
                     <!-- Goal Information Section -->
                     <div class="pb-5">
                         <h4 class="text-info">Goal Information</h4>
-
+                        <div class="row">
                         <div class="mb-3">
                             <label for="goal-name" class="form-label">Goal Name:</label>
                             <input type="text" name="goal-name" class="form-control" id="goal-name" required />
@@ -159,7 +157,38 @@
     <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/aos/aos.js"></script>
     <script src="./scripts/goal-setting.js"></script>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('goal-form');
+            const formData = new FormData(form);
 
+            fetch("config/goal-setting-config.php", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the response data
+                console.log(data);
+                if (data.status === 'success') {
+                    alert('Goal saved successfully!');
+                    form.reset(); // Clear the form
+                } else {
+                    alert('An error occurred: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while saving the goal: ' + error.message);
+            });
+        }
+    </script>
     <?php include "footer.php" ?>
 </body>
 

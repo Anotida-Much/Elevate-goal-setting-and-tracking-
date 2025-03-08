@@ -4,43 +4,43 @@ const taskCheckboxes = document.querySelectorAll(
   '.task input[type="checkbox"]'
 );
 const progressBarContainers = document.querySelectorAll(".progress");
-// Call this function after the tasks are rendered
-// document.addEventListener("DOMContentLoaded", () => {});
 
 // Function to update task status
-function updateTaskStatus(event) {
+async function updateTaskStatus(event) {
   const checkbox = event.target;
   const taskName = checkbox.nextElementSibling;
   const goalContainer = checkbox.closest("article");
-  const progressBar = goalContainer.querySelector(".progress-bar");
 
   // Send AJAX request to update task completion status
   const taskId = checkbox.id;
   const completed = checkbox.checked ? 1 : 0;
 
-  fetch("./config/update_task.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `task_id=${taskId}&completed=${completed}`,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        if (checkbox.checked) {
-          taskName.classList.add("completed");
-        } else {
-          taskName.classList.remove("completed");
-        }
-        checkAllTasksCompleted(goalContainer);
-        updateProgressBars();
-        updateGoalProgressBars();
+  try {
+    const response = await fetch("./config/update_task.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `task_id=${taskId}&completed=${completed}`,
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      if (checkbox.checked) {
+        taskName.classList.add("completed");
       } else {
-        console.error("Error updating task status");
+        taskName.classList.remove("completed");
       }
-    })
-    .catch((error) => console.error("Error:", error));
+      checkAllTasksCompleted(goalContainer);
+      updateProgressBars();
+      updateGoalProgressBars();
+    } else {
+      console.error("Error updating task status");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 // Add event listeners to task checkboxes
@@ -79,7 +79,7 @@ function updateProgressBars() {
   // Update the progress bar width
   const progressBar = document.querySelector(".progress-bar");
   if (progressBar) {
-    progressBar.style.width = percentageCompleted + "%";
+    progressBar.style.width = `${percentageCompleted}%`;
     progressBar.textContent = `${Math.floor(percentageCompleted)}%`;
   }
 }
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateGoalProgressBars();
 });
 
-//Dropdown Menu
+// Dropdown Menu
 const dropdownItems = document.querySelectorAll(".dropdown-item");
 
 // Add event listener to each dropdown item
@@ -173,34 +173,3 @@ const updateUI = (action, goalId) => {
       break;
   }
 };
-
- // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Isotope on the goal container
-            var iso = new Isotope('.row', {
-                itemSelector: '.card',
-                layoutMode: 'fitRows'
-            });
-
-            // Filter buttons
-            document.querySelectorAll('.filter-btn').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var filterValue = this.getAttribute('data-filter');
-                    iso.arrange({
-                        filter: filterValue
-                    });
-                });
-            });
-
-            // Sort buttons
-            document.querySelectorAll('.dropdown-item[data-sort-by]').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var sortByValue = this.getAttribute('data-sort-by');
-                    var sortAscending = (sortByValue === 'original-order') ? true : false;
-                    iso.arrange({
-                        sortBy: sortByValue,
-                        sortAscending: sortAscending
-                    });
-                });
-            });
-        });
