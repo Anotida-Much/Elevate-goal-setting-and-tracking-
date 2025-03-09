@@ -7,20 +7,14 @@
 # Font & Color Variables
 --------------------------------------------------------------*/
 
-/* Global Colors - The following color variables are used throughout the App. Updating them here will change the color scheme of the entire App */
 :root {
   --background-color: #ffffff;
-  /* Background color for the entire App, including individual sections */
   --default-color: #444444;
-  /* Default color used for the majority of the text content across the entire App */
   --heading-color: #111111;
-  /* Color for headings, subheadings and title throughout the App */
   --accent-color: #007bff;
-  /* Accent color that represents your brand on the App. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  scroll-behavior: smooth;
 }
 
 .light-background {
@@ -35,11 +29,6 @@
   --surface-color: #353535;
   --contrast-color: #ffffff;
   color: #ffffff;
-}
-
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
 }
 
 /*--------------------------------------------------------------
@@ -66,41 +55,38 @@ h4 {
 a {
   text-decoration: none;
   transition: 0.3s;
+  color: white; /* Ensuring all links in blue background are white by default */
 }
 
 a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
-  text-decoration: none;
 }
 
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
+/* PHP Email Form Messages */
+.php-email-form .error-message,
+.php-email-form .sent-message,
+.php-email-form .loading {
   display: none;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .error-message {
   background: #df1529;
   color: #ffffff;
   text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
 }
 
 .php-email-form .sent-message {
-  display: none;
   color: #ffffff;
   background: #059652;
   text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
 }
 
 .php-email-form .loading {
-  display: none;
   background: var(--surface-color);
   text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
 }
 
 .php-email-form .loading:before {
@@ -119,7 +105,6 @@ a:hover {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -177,7 +162,6 @@ section,
 .section-title h2,
 .section-title h3,
 .section-title h4 {
-  /* font-size: 32px; */
   font-weight: 600;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -208,9 +192,7 @@ section,
 # Home page statistical cards
 --------------------------------------------------------------*/
 .statistics-card {
-  /* background-color: #fff; */
   padding: 15px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   margin-bottom: 30px;
   position: relative;
@@ -220,7 +202,6 @@ section,
 .statistics-card,
 h4,
 .statistics-card p {
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -233,7 +214,6 @@ h4,
   height: 5px;
   background-color: rgb(70, 70, 112);
   z-index: -1;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -255,24 +235,21 @@ h4,
 }
 
 .motivation .info-item i {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--accent-color);
   width: 56px;
   height: 56px;
-  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
   border-radius: 50%;
+  transition: all 0.3s ease-in-out;
   border: 2px dotted color-mix(in srgb, var(--accent-color), transparent 40%);
 }
 
 .motivation .info-item h3 {
-  font-size: 20px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
   font-size: 18px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
   font-weight: 700;
   margin: 10px 0;
 }
@@ -320,12 +297,14 @@ h4,
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
+/* Navbar */
 .navbar {
   position: fixed;
   z-index: 2;
   top: 0;
   width: 100%;
 }
+
 .navbar-nav .nav-link:hover {
   color: #fff;
   background-color: rgb(13, 110, 253);
@@ -335,7 +314,7 @@ h4,
   margin-top: 7%;
 }
 
-/* additional styles for nav */
+/* Dropdown Menu */
 .dropdown-menu {
   background-color: rgb(13, 110, 253);
   color: #ffffff;
@@ -351,10 +330,7 @@ h4,
   color: rgb(13, 110, 253);
 }
 
-#logo-header {
-  font-size: 2ems;
-}
-
+/* Card */
 .card {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -364,6 +340,7 @@ h4,
   padding: 20px;
 }
 
+/* Blockquote */
 .blockquote {
   font-style: italic;
 }
@@ -372,8 +349,7 @@ h4,
   font-size: 14px;
 }
 
-/* set goal styles */
-/* form styling */
+/* Form Group */
 .form-group {
   margin-top: 20px;
 }
@@ -384,13 +360,13 @@ h4,
   font-weight: 600;
 }
 
-/* custom width for columns so it allow margin */
+/* Custom Styles */
 .custom-styles {
   min-height: 200px;
   align-content: center;
 }
 
-/* Task list styling */
+/* Task List */
 #tasks-list {
   list-style: none;
   padding: 0;
@@ -406,13 +382,12 @@ h4,
   border-bottom: none;
 }
 
-/* Task remove button */
 #tasks-list li button {
   float: right;
   margin-top: -5px;
 }
 
-/* Icon styling */
+/* Icon Styling */
 .bi {
   font-size: 18px;
   text-align: center;
@@ -427,6 +402,7 @@ h4,
   color: rgb(13, 110, 253);
 }
 
+/* CTA Button */
 .cta-btn {
   border: 1px solid silver;
   border-radius: 10px;
@@ -439,6 +415,7 @@ h4,
   font-size: 15px;
 }
 
+/* Random Quote */
 #randomQuote {
   font-size: large;
 }
@@ -448,11 +425,13 @@ h4,
   font-style: italic;
 }
 
+/* Custom Form Background */
 #custom-form-bg {
   background: linear-gradient(to bottom, darkblue, blue, purple);
-  color: blu;
+  color: blue;
 }
 
+/* Custom Card Position */
 .custom-card-position {
   position: relative;
 }
@@ -463,7 +442,7 @@ h4,
   right: 5vh;
 }
 
-/* styles for goal completion badge  */
+/* Goal Completion Badge */
 .completed {
   text-decoration: line-through;
   color: green;
@@ -499,11 +478,12 @@ h4,
 #no-goal-alert-btn:hover {
   background-color: #059652;
 }
+
 #no-goal-alert-btn:focus {
   padding: 5px 10px;
 }
 
-/* diabling a goal */
+/* Disabling a Goal */
 .disabled {
   opacity: 0.75;
   pointer-events: none;
@@ -519,13 +499,7 @@ h4,
   right: 20px;
 }
 
-/* making sure all links in blue background are white by default */
-a {
-  color: white;
-}
-
 /* Notebook */
-/* note-list */
 #note-list {
   max-height: 250px;
   overflow: scroll;
@@ -551,7 +525,7 @@ a {
   width: 80vh;
 }
 
-/* Adjusting the size of th Menu on extra small screens  */
+/* Adjusting the size of the Menu on extra small screens */
 @media (max-width: 576px) {
   #navbarSupportedContent {
     width: 80%;
@@ -563,13 +537,7 @@ a {
   border-color: red;
 }
 
-/* ------------------------------------------------------------------------------------- */
-#logo-name {
-  color: blue;
-}
-
 /* Index Page - Top 3 pressing goals */
-
 #card-border {
   border-width: 1px;
   border-color: lightblue;
@@ -582,8 +550,7 @@ a {
     brightness(100%) contrast(100%);
 }
 
-/* custom designs for the footer */
-
+/* Footer */
 #main-footer {
   background: linear-gradient(to bottom, #2e4053, #1a1d23);
   padding: 20px;
@@ -594,14 +561,15 @@ a {
   background-image: linear-gradient(to right, #007bff, #34c759);
   color: #ffffff;
   border: none;
-  padding: 10x 20px;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-/* Greeting styles */
- .gradient-text {
-    background: linear-gradient(to right, blue, rgb(255, 230, 0));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* Greeting Styles */
+.gradient-text {
+  background: linear-gradient(to right, blue, rgb(255, 230, 0));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

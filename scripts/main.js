@@ -309,17 +309,24 @@ async function deleteAccount() {
     });
     const data = await response.json();
     if (data.status === "success") {
-      window.showToast(data.message);
+      if (typeof window.showToast === "function") {
+        window.showToast(data.message);
+      } else {
+        alert(data.message);
+      }
       window.location.href = "sign-up.php";
     } else {
       console.error("Error:", data.message);
       alert("Error deleting account: " + data.message);
     }
   } catch (error) {
-    window.showToast(
-      "danger",
-      "There was a problem with the fetch operation: " + error.message
-    );
+    if (typeof window.showToast === "function") {
+      window.showToast(
+        "There was a problem with the fetch operation: " + error.message
+      );
+    } else {
+      alert("There was a problem with the fetch operation: " + error.message);
+    }
   }
 }
 

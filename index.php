@@ -376,8 +376,8 @@ require_once 'config/auth.php';
   <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/quill/quill.js"></script>
-    <script src="vendor/chart.js/chart.umd.js"></script>
-    <script src="vendor/typed.js/typed.umd.js"></script>
+  <script src="vendor/chart.js/chart.umd.js"></script>
+  <script src="vendor/typed.js/typed.umd.js"></script>
 
   <script src="./scripts/main.js"></script>
   <script src="./scripts/index.js"></script>
