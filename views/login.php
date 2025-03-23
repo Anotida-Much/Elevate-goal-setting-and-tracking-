@@ -5,14 +5,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description"
-            content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
+            content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
         <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
-        <meta name="author" keywords="Anotida Muchinhairi">
+        <meta name="author" content="Anotida Muchinhairi">
 
-        <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-        <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.css" />
-        <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+        <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
         <title>Elevate: Login Page</title>
     </head>
 
@@ -36,7 +36,7 @@
                 }
 
                 // Check for valid credentials
-                require_once 'config/db.php';
+                require_once '../config/db.php';
                 $query = "SELECT id, username, email, password FROM users WHERE username = ?";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("s", $username);
@@ -72,7 +72,7 @@
 
         <div class="container align-content-center mt-5 rounded">
             <main class="form col-md-8 mx-auto shadow-sm border-bottom border-5 border-primary">
-                <header class="bg-primary  text-center p-4">
+                <header class="bg-primary text-center p-4">
                     <h2 class="text-light">WELCOME TO ELEVATE</h2>
                 </header>
                 <section class="p-4">
@@ -109,7 +109,7 @@
             </main>
         </div>
 
-        <script src="./scripts/toggle-password-visibility.js"></script>
+        <script src="../assets/js/toggle-password-visibility.js"></script>
     </body>
 
 </html>

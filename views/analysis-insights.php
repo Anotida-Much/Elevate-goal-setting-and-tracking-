@@ -5,17 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
+        content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
     <meta name="keywords"
-        content="goal setting,goal analysis, goal tracking, productivity, personal development, Elevate">
+        content="goal setting, goal analysis, goal tracking, productivity, personal development, Elevate">
     <meta name="author" content="Anotida Muchinhairi">
 
-    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="vendor/aos/aos.css" />
-    <link rel="stylesheet" href="vendor/quill/quill.snow.css">
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../assets/vendor/aos/aos.css" />
+    <link rel="stylesheet" href="../assets/vendor/quill/quill.snow.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <title>Elevate - Analysis and Insights</title>
 </head>
 
@@ -32,7 +32,7 @@
                         <canvas id="pieChart" class="mh-md-200"></canvas>
                         <script>
                             const fetchDataAndUpdateChart = () => {
-                                fetch("./config/analysis/pie-chart.php", {
+                                fetch("../config/analysis/pie-chart.php", {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/json",
@@ -85,7 +85,7 @@
                         <canvas id="top-goals" style="max-height: auto;"></canvas>
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
-                                fetch("./config/analysis/top-goals.php")
+                                fetch("../config/analysis/top-goals.php")
                                     .then(response => response.json())
                                     .then(data => {
                                         const labels = data.map(item => item.goal_name);
@@ -124,11 +124,7 @@
             </div>
         </div>
 
-
-
-
         <div class="row">
-
             <div class="col-sm-12 col-md-6 mx-auto my-3">
                 <div class="card">
                     <div class="card-body">
@@ -136,7 +132,7 @@
                         <canvas id="progress-over-time" style="max-height: auto;"></canvas>
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
-                                fetch("./config/analysis/timeline.php")
+                                fetch("../config/analysis/timeline.php")
                                     .then(response => response.json())
                                     .then(data => {
                                         const dates = data.map(item => item.updated_at);
@@ -204,7 +200,7 @@
                                 '#f39c12' // orange
                             ];
 
-                            fetch('./config/analysis/categories.php')
+                            fetch('../config/analysis/categories.php')
                                 .then(response => response.json())
                                 .then(data => {
                                     const chartData = {
@@ -254,19 +250,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-
-
-
-    <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/aos/aos.js"></script>
-    <script src="vendor/chart.js/chart.umd.js"></script>
-    <script src="vendor/quill/quill.js"></script>
-    <script src="./scripts/theme.js"></script>
-
+    <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../assets/vendor/quill/quill.js"></script>
+    <script src="../assets/js/theme.js"></script>
 
     <?php include "footer.php" ?>
 </body>

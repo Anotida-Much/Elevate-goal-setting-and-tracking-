@@ -7,12 +7,12 @@
     <meta name="description" content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
     <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
     <meta name="author" content="Anotida Muchinhairi">
-    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="vendor/aos/aos.css" />
-    <link rel="stylesheet" href="vendor/quill/quill.snow.css">
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../assets/vendor/aos/aos.css" />
+    <link rel="stylesheet" href="../assets/vendor/quill/quill.snow.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <title>Elevate: Goal Setting</title>
 </head>
 
@@ -155,9 +155,9 @@
         </div>
     </div>
 
-    <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/aos/aos.js"></script>
-    <script src="./scripts/goal-setting.js"></script>
+    <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/js/goal-setting.js"></script>
     <script>
         function handleFormSubmit(event) {
             event.preventDefault();
@@ -169,7 +169,7 @@
                 formData.append('goal-completion-type', 'Completing tasks');
             }
 
-            fetch("config/goal-setting-config.php", {
+            fetch("../config/goal-setting-config.php", {
                     method: 'POST',
                     body: formData
                 })

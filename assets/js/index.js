@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const response = await fetch(
-      "./config/analysis/pie-chart.php",
+      "../config/analysis/pie-chart.php", // Fixed relative path
       fetchConfig
     );
 

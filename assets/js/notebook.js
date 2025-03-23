@@ -37,12 +37,13 @@ function clearInputBoxes() {
 // Fetch notes from the server
 async function fetchNotes() {
   try {
-    const response = await fetch("./config/notebook-api.php", {
+    const response = await fetch("../config/notebook.php", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
     const notes = await response.json();
     const noteList = document.getElementById("note-list");
+    noteList.innerHTML = ""; // Clear the list before appending new notes
 
     notes.forEach((note) => {
       const noteItem = createNoteItem(note);
@@ -82,13 +83,10 @@ function createNoteItem(note) {
 async function loadNoteForEditing(noteId) {
   try {
     currentNoteId = noteId;
-    const response = await fetch(
-      `./config/notebook-get-note.php?id=${noteId}`,
-      {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(`../config/notebook.php?id=${noteId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
     const noteData = await response.json();
     document.getElementById("note-title").value = noteData.title;
     quill.setContents(noteData.content.ops);
@@ -107,16 +105,17 @@ document.getElementById("save-note").addEventListener("click", async () => {
   const content = quill.getContents();
 
   try {
-    const response = await fetch("./config/notebook-api.php", {
+    const response = await fetch("../config/notebook.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ title, content }),
     });
-    const data = await response.text();
-    window.showToast("success", data);
+    const data = await response.json();
+    window.showToast(data.message);
     clearInputBoxes();
+    fetchNotes(); // Refresh the note list
   } catch (error) {
     console.error("Error saving note:", error);
   }
@@ -135,20 +134,17 @@ document.getElementById("update-note").addEventListener("click", async () => {
   const content = quill.getContents();
 
   try {
-    const response = await fetch(
-      `./config/notebook-update.php?id=${currentNoteId}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, content }),
-      }
-    );
+    const response = await fetch(`../config/notebook.php?id=${currentNoteId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, content }),
+    });
     const data = await response.json();
-    console.log(data.message);
     window.showToast(data.message);
     clearInputBoxes();
+    fetchNotes(); // Refresh the note list
   } catch (error) {
     console.error("Error updating note:", error);
   }
@@ -163,13 +159,10 @@ async function deleteNoteHandler(event, noteId) {
     )
   ) {
     try {
-      const response = await fetch(
-        `./config/notebook-delete.php?id=${noteId}`,
-        {
-          method: "DELETE",
-        }
-      );
-      const data = await response.text();
+      const response = await fetch(`../config/notebook.php?id=${noteId}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
       window.showToast(data.message);
       // Remove deleted note from list
       event.target.closest("LI").remove();

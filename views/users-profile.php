@@ -8,36 +8,43 @@
   <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
   <meta name="author" content="Anotida Muchinhairi">
 
-  <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-  <link href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+  <link href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <title>Elevate - My Profile</title>
 </head>
 
 <body>
   <?php
-  // Check if user is logged in
-  include_once 'config/auth.php';
+  include_once '../config/auth.php';
+  include_once '../config/db.php';
   include_once 'navbar.php';
+
+  // Fetch user data from the database
+  $user_id = $_SESSION['user_id'];
+  $stmt = $conn->prepare("SELECT full_name, username, country, email FROM users WHERE id = ?");
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $user = $result->fetch_assoc();
   ?>
 
-  <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
-    <!-- Toasts will be appended here -->
-  </div>
+  <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
 
   <main id="main" class="container-fluid mt-5 pt-5">
     <div class="container section-title" data-aos="fade-up">
       <h2>My Profile</h2>
       <p>Manage your Account Information and Settings</p>
-    </div><!-- End Section Title -->
+    </div>
 
     <section class="section profile text-dark">
       <div class="row">
         <div class="col-xl-4 mb-3">
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              <h3 id="fullname" class="text-primary">Full Name</h3>
-              <h5 id="username" class="text-info">Username</h5>
+              <h3 id="fullname" class="text-primary"><?= htmlspecialchars($user['full_name']) ?></h3>
+              <h5 id="username" class="text-info"><?= htmlspecialchars($user['username']) ?></h5>
             </div>
           </div>
         </div>
@@ -45,7 +52,6 @@
         <div class="col-xl-8">
           <div class="card">
             <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
               <ul class="nav nav-tabs nav-tabs-bordered">
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
@@ -61,63 +67,63 @@
                 </li>
               </ul>
               <div class="tab-content pt-2">
+                <!-- Profile Overview -->
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h4 class="card-title lead"><b>Profile Details</b></h4>
                   <div class="row">
                     <div class="col-md-4 label"><b>Full Name</b></div>
-                    <div class="col-md-8 text-primary" id="full-name"></div>
+                    <div class="col-md-8 text-primary"><?= htmlspecialchars($user['full_name']) ?></div>
                   </div>
                   <div class="row">
                     <div class="col-md-4 label"><b>Username</b></div>
-                    <div class="col-md-8 text-primary" id="user-name"></div>
+                    <div class="col-md-8 text-primary"><?= htmlspecialchars($user['username']) ?></div>
                   </div>
                   <div class="row">
                     <div class="col-md-4 label"><b>Country</b></div>
-                    <div class="col-md-8 text-primary" id="country"></div>
+                    <div class="col-md-8 text-primary"><?= htmlspecialchars($user['country']) ?></div>
                   </div>
                   <div class="row">
                     <div class="col-md-4 label"><b>Email</b></div>
-                    <div class="col-md-8 text-primary" id="email"></div>
+                    <div class="col-md-8 text-primary"><?= htmlspecialchars($user['email']) ?></div>
                   </div>
                 </div>
 
+                <!-- Profile Edit -->
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  <!-- Profile Edit Form -->
                   <form id="profile-edit-form">
                     <div class="row mb-3">
                       <label for="full_name" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="full_name" value="" required>
+                        <input name="fullName" type="text" class="form-control" id="full_name" value="<?= htmlspecialchars($user['full_name']) ?>" required>
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="user_name" class="col-md-4 col-lg-3 col-form-label">Username</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="username" type="text" class="form-control" id="user_name" value="" required>
+                        <input name="username" type="text" class="form-control" id="user_name" value="<?= htmlspecialchars($user['username']) ?>" required>
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="user_country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="user_country" value="" required>
+                        <input name="country" type="text" class="form-control" id="user_country" value="<?= htmlspecialchars($user['country']) ?>" required>
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="user_email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="user_email" value="" required>
+                        <input name="email" type="email" class="form-control" id="user_email" value="<?= htmlspecialchars($user['email']) ?>" required>
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary" id="update-profile-btn">Save Changes</button>
                     </div>
-                  </form><!-- End Profile Edit Form -->
+                  </form>
                 </div>
 
+                <!-- Profile Settings -->
                 <div class="tab-pane fade pt-3" id="profile-settings">
-                  <!-- Settings Form -->
                   <form id="profile-settings-form">
-                    <!-- Theme Toggle Button -->
                     <div class="row mb-3">
                       <label for="theme-toggle" class="col-md-4 col-lg-3 col-form-label">Theme</label>
                       <div class="col-md-8 col-lg-9">
@@ -127,9 +133,8 @@
                         </div>
                       </div>
                     </div>
-                    <!-- Rest of the settings form -->
                     <div class="row mb-3">
-                      <label for="notifications" class="col-md-4 col-lg-3 col-form-label">Choose what kind of notifications you want to receive</label>
+                      <label for="notifications" class="col-md-4 col-lg-3 col-form-label">Notifications</label>
                       <div class="col-md-8 col-lg-9">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="goal-progress-notify">
@@ -152,11 +157,11 @@
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End settings Form -->
+                  </form>
                 </div>
 
+                <!-- Change Password -->
                 <div class="tab-pane fade pt-3" id="profile-change-password">
-                  <!-- Change Password Form -->
                   <form id="profile-change-password-form">
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
@@ -179,20 +184,20 @@
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Change Password</button>
                     </div>
-                  </form><!-- End Change Password Form -->
+                  </form>
                 </div>
-              </div><!-- End Bordered Tabs -->
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  </main><!-- End #main -->
+  </main>
 
-  <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-  <script src="./scripts/toasts.js"></script>
-  <script src="./scripts/theme.js"></script>
-  <script src="./scripts/my-profile-btn.js"></script>
+  <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/toasts.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/my-profile-btn.js"></script>
 </body>
 
 </html>

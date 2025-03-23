@@ -1,7 +1,7 @@
 <?php
 // Include authentication and configuration files
-require_once 'config/auth.php';
-require_once 'config/db.php';
+require_once '../config/auth.php';
+require_once '../config/db.php';  
 
 $username = $_SESSION['username'];
 
@@ -27,10 +27,10 @@ if ($result->num_rows > 0) {
               <h4 class="alert-heading text-light">Elevate</h4>
               <p class="text-light lead"> You haven\'t set any goals yet. Get started by setting your first goal!</p>
               <hr class="text-light">
-              <a href="goal-setting.php" id="no-goal-alert-btn" class="text-light  border rounded border-lihgt py-2 px-3">Set Your Fisrt Goal</a>
+              <a href="../views/goal-setting.php" id="no-goal-alert-btn" class="text-light border rounded border-light py-2 px-3">Set Your First Goal</a> <!-- Updated path -->
           </div>
         </div>
-  ';
+    ';
 }
 
 $goal_data = array();
