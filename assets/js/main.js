@@ -286,50 +286,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 setInterval(calculateDays, 86400000); // 86400000 milliseconds = 1 day
 
-// Account Settings
-document
-  .getElementById("deleteAccountBtn")
-  .addEventListener("click", function () {
-    if (
-      confirm(
-        "Are you sure you want to delete your account? All your goals will be deleted as well. This action cannot be undone."
-      )
-    ) {
-      deleteAccount();
-    }
-  });
-
-async function deleteAccount() {
-  try {
-    const response = await fetch("./config/account-settings.php", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (data.status === "success") {
-      if (typeof window.showToast === "function") {
-        window.showToast(data.message);
-      } else {
-        alert(data.message);
-      }
-      window.location.href = "sign-up.php";
-    } else {
-      console.error("Error:", data.message);
-      alert("Error deleting account: " + data.message);
-    }
-  } catch (error) {
-    if (typeof window.showToast === "function") {
-      window.showToast(
-        "There was a problem with the fetch operation: " + error.message
-      );
-    } else {
-      alert("There was a problem with the fetch operation: " + error.message);
-    }
-  }
-}
-
 // Set the idle timeout (10 minutes)
 const timeout = 10 * 60 * 1000;
 let timer = setTimeout(logoutUser, timeout);
@@ -349,9 +305,9 @@ function resetTimer() {
 
 async function logoutUser() {
   try {
-    const response = await fetch("./config/logout.php");
+    const response = await fetch("../config/logout.php");
     if (response.ok) {
-      window.location.href = "./login.php";
+      window.location.href = "../views/login.php";
     } else {
       console.error("Failed to log out user:", response.status);
     }

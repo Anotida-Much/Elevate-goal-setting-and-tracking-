@@ -5,24 +5,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
+        content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
     <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
-    <meta name="author" keywords="Anotida Muchinhairi">
+    <meta name="author" content="Anotida Muchinhairi">
 
-    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="vendor/aos/aos.css" />
-    <link rel="stylesheet" href="vendor/quill/quill.snow.css">
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/aos/aos.css" />
+    <link rel="stylesheet" href="../assets/vendor/quill/quill.snow.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <title>Elevate: My Goals</title>
 </head>
 
 
 <body>
     <?php
-    require_once './config/display-goals-config.php';
-    require_once './navbar.php';
+    require_once '../config/display-goals-config.php';
+    require_once 'navbar.php';
     ?>
 
     <div class="row position-relative mt-5 pt-5 me-auto">
@@ -75,7 +75,7 @@
                     <!-- beginning of goal container -->
                     <article class="card border-bottom my-5">
                         <header class="card-body d-flex">
-                            <img src="./img/time.jpg" alt="Goal Image" class="rounded" width="50" height="50">
+                            <img src="../assets/img/time.jpg" alt="Goal Image" class="rounded" width="50" height="50">
                             <div class="flex-grow-1 mx-3">
                                 <h4 class="card-title" id="card-title" goal-id="<?= $data['goal']['id'] ?>">
                                     <?= $data['goal']['goal_name'] ?>
@@ -141,9 +141,10 @@
         </div>
     </main>
 
-    <script src="vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-    <script src="scripts/display.js"></script>
-    <script src="./scripts/theme.js"></script>
+    <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/quill/quill.js"></script>
+    <script src="../assets/js/display.js"></script>
 
     <?php include "footer.php" ?>
 </body>

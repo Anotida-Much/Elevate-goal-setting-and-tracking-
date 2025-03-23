@@ -5,29 +5,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Elavate: Your ultimate goal setting and tracking web app to help you achieve your aspirrations and maximum potential.">
+        content="Elevate: Your ultimate goal setting and tracking web app to help you achieve your aspirations and maximum potential.">
     <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
-    <meta name="author" keywords="Anotida Muchinhairi">
+    <meta name="author" content="Anotida Muchinhairi">
 
-    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <title>Elevate - Sign Up</title>
 </head>
 
 <body class="mt-5 mb-5">
-
     <?php
     ob_start();
-    require_once 'config/db.php';
+    require_once '../config/db.php';
 
-    // Check if form is submitted
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Initialize error array
         $errors = [];
-
-        // Validate input fields
         $full_name = trim($_POST['full_name']);
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
@@ -35,60 +30,36 @@
         $confirm_password = trim($_POST['confirm_password']);
         $country = trim($_POST['country']);
 
-        // Validation rules
-        if (empty($full_name)) {
-            $errors[] = 'Full name is required';
-        }
-        if (empty($username)) {
-            $errors[] = 'Username is required';
-        }
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Valid email is required';
-        }
-        if (empty($password) || strlen($password) < 8) {
-            $errors[] = 'Password must be at least 8 characters';
-        }
-        if ($password !== $confirm_password) {
-            $errors[] = 'Passwords do not match';
-        }
+        if (empty($full_name)) $errors[] = 'Full name is required';
+        if (empty($username)) $errors[] = 'Username is required';
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Valid email is required';
+        if (empty($password) || strlen($password) < 8) $errors[] = 'Password must be at least 8 characters';
+        if ($password !== $confirm_password) $errors[] = 'Passwords do not match';
 
-        // Check if email or username already exists
         $query = "SELECT * FROM users WHERE email = ? OR username = ?";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, "ss", $email, $username);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($result) > 0) {
-            $errors[] = 'Email or username already exists';
-        }
+        if (mysqli_num_rows($result) > 0) $errors[] = 'Email or username already exists';
 
-        // Display errors or register user
         if (!empty($errors)) {
             foreach ($errors as $error) {
                 echo '<p style="color:red;">' . htmlspecialchars($error) . '</p>';
             }
         } else {
-            // Hash password
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
-            // Register user
             $query = "INSERT INTO users (full_name, username, email, password, country) VALUES (?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $query);
             mysqli_stmt_bind_param($stmt, "sssss", $full_name, $username, $email, $hashed_password, $country);
             mysqli_stmt_execute($stmt);
-
-            // Redirect to login page
             header('Location: login.php');
             exit;
         }
     }
     ob_end_flush();
     ?>
-
-
-
-
 
     <div class="container-fluid">
         <main class="form col-md-8 offset-md-2 shadow-sm border-bottom border-5 border-primary">
@@ -142,8 +113,6 @@
                                     <i class="bi bi-eye" onclick="togglePasswordVisibility('inputPassword', this)"></i>
                                 </span>
                             </div>
-
-
                         </div>
                         <div class="form-group mb-3">
                             <label for="confirm-password" class="form-label text-primary">Confirm Password</label>
@@ -190,7 +159,7 @@
         </main>
     </div>
 
-    <script src="./scripts/toggle-password-visibility.js"></script>
+    <script src="../assets/js/toggle-password-visibility.js"></script>
 </body>
 
 </html>

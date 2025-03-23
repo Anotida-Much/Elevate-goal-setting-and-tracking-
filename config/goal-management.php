@@ -1,6 +1,6 @@
 <?php
-require_once 'auth.php';
-require_once 'db.php';
+require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/db.php';  
 
 // Check authentication
 if (!isset($_SESSION['username'])) {
@@ -21,7 +21,7 @@ if (!$action || !$goalId || !filter_var($goalId, FILTER_VALIDATE_INT)) {
 $allowedActions = ['pause', 'mark-complete', 'resume', 'missed', 'delete'];
 
 if (!in_array($action, $allowedActions)) {
-    respondWithError('The selected option is still work in progress. We are sorry for the incovinience caused.');
+    respondWithError('The selected option is still work in progress. We are sorry for the inconvenience caused.');
     exit;
 }
 
