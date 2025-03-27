@@ -206,85 +206,96 @@ require_once '../config/auth.php';
   <!-- Motivation Section -->
   <section id="motivation" class="motivation section my-0 py-5 gy-0">
     <div class="container section-title text-center">
-      <h3>Share and Motivate</h3>
-      <p>Find motivation in quotes, tips, and personal stories.</p>
+        <h3>Daily Inspiration</h3>
+        <p>Stay motivated with daily quotes and insights</p>
     </div>
 
     <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-      <div class="row gy-4">
-        <div class="col-lg-6">
-          <div class="row gy-4">
-            <div class="col-12 px-0">
-              <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
-                data-aos-delay="200">
-                <div class="m-4">
-                  <h4 class="text-info">Daily Inspirations</h4>
-                  <blockquote class="d-flex justify-content-between">
-                    <p class="lead" id="randomQuote"></p>
-                    <cite id="author" class="float-right"></cite>
-                  </blockquote>
+        <div class="row gy-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <div class="text-center mb-4">
+                            <h4 class="text-info mb-3">Daily Inspiration</h4>
+                            <div class="quote-container p-4 bg-light rounded-3">
+                                <blockquote class="mb-0">
+                                    <p class="lead" id="randomQuote"></p>
+                                    <footer class="blockquote-footer mt-3" id="author"></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="quote-actions mt-4">
+                            <button class="btn btn-outline-primary me-2" onclick="refreshQuote()">
+                                <i class="bi bi-arrow-clockwise"></i> New Quote
+                            </button>
+                            <button class="btn btn-outline-success" onclick="shareQuote()">
+                                <i class="bi bi-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
 
-            <div class="col-12 section w-100 border rounded shadow-lg" id="cta-section">
-              <div class="d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
-                data-aos-delay="300">
-                <div class="row p-4" data-aos="zoom-in" data-aos-delay="100">
-                  <div class="col-xl-8 text-center text-xl-start">
-                    <h3>Unlock Your Potential</h3>
-                    <p class="mb-4">Don't wait for tommorow. Start setting your goals today and make progress towards
-                      your dreams.</p>
-                  </div>
-                  <div class="col-xl-4 cta-btn-container text-center align-content-center">
-                    <a class="btn btn-grad rounded-pill d-span shadow-sm" href="./goal-setting.php">Create A Goal</a>
-                  </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Top 5 Goals</h4>
+                        <canvas id="top-goals" style="max-height: 300px;"></canvas>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                fetch("../config/analysis/top-goals.php")
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const labels = data.map(item => item.goal_name);
+                                        const progressPercentages = data.map(item => item.progress_percentage);
+                                        
+                                        new Chart(document.getElementById('top-goals').getContext('2d'), {
+                                            type: 'bar',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    label: 'Progress (%)',
+                                                    data: progressPercentages,
+                                                    backgroundColor: '#0d6efd',
+                                                    borderColor: '#0d6efd',
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true,
+                                                        max: 100
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                            });
+                        </script>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
+    </div>
+  </section>
 
-        <div class="col-lg-6">
-          <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-            <div class="row gy-4">
-              <div class="section-title" style="padding-bottom: 3px;">
-                <h4 class="sub-title">
-                  <i class="bi bi-envelope m-3 fs-4"></i>Inspire the Community
-                </h4>
-                <p>
-                  Share your thoughts, experiences, tips or favourite quotes. Your words matter!
-                </p>
-              </div>
-
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="username" placeholder="Your name" required>
-              </div>
-              <div class="col-md-6">
-                <select class="form-control" id="type" required>
-                  <option value="">What do want to share?</option>
-                  <option value="experiance">An Experience</option>
-                  <option value="quote">A Quote</option>
-                  <option value="tip">A Tip</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
-              </div>
-
-              <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                <button type="submit" class="btn btn-grad rounded-pill px-5 py-2">Send Message</button>
-              </div>
+  <!-- CTA Section -->
+  <section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h2 class="display-4 fw-bold mb-3">Ready to Achieve Your Goals?</h2>
+                <p class="lead mb-0">Start your journey towards success today. Set your goals, track your progress, and celebrate your achievements.</p>
             </div>
-          </form>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <a href="./goal-setting.php" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-sm">
+                    Create Your First Goal
+                </a>
+            </div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -326,20 +337,18 @@ require_once '../config/auth.php';
 
   <script src="/Elevate/assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
   <script src="/Elevate/assets/vendor/aos/aos.js"></script>
-  <script src="/Elevate/assets/vendor/quill/quill.js"></script>
   <script src="/Elevate/assets/vendor/chart.js/chart.umd.js"></script>
   <script src="/Elevate/assets/vendor/typed.js/typed.umd.js"></script>
   <script src="/Elevate/assets/js/main.js"></script>
   <script src="/Elevate/assets/js/index.js"></script>
   <script src="/Elevate/assets/js/toasts.js"></script>
-  <script src="/Elevate/assets/js/notebook.js"></script>
   <script src="/Elevate/assets/js/theme.js"></script>
   <script src="/Elevate/assets/js/live-clock.js"></script>
   <script src="/Elevate/assets/js/greeting.js"></script>
   <script src="/Elevate/assets/js/delete-account.js"></script>
-  <?php
-  include_once './footer.php';
-  ?>
+  
+  <?php include "notebook.php" ?>
+  <?php include "footer.php" ?>
 </body>
 
 </html>

@@ -24,7 +24,7 @@
                         <!-- Title input and Quill editor -->
                         <input type="text" id="note-title" class="form-control border-bottom-0" value=""
                             placeholder="Note Title" required>
-                        <div id="quill-editor" class="quill-editor"></div>
+                        <div id="quill-editor" style="height: 250px;"></div>
                     </div>
                 </div>
             </div>
@@ -38,10 +38,9 @@
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="/Elevate/assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script src="/Elevate/assets/vendor/quill/quill.min.js"></script>
-<script src="/Elevate/assets/js/notebook.js"></script>
+<!-- Required Scripts -->
+<script src="../assets/vendor/quill/quill.js"></script>
+<script src="../assets/js/notebook.js"></script>
 <script>
     // Initialize Quill editor
     const quill = new Quill('#quill-editor', {
@@ -50,7 +49,7 @@
 
     // Fetch notes and populate the note list
     const fetchNotes = () => {
-        fetch('/Elevate/config/notebook-get-note.php') // Ensure this path is correct
+        fetch('/Elevate/config/notebook-get-note.php')
             .then(response => response.json())
             .then(data => {
                 const noteList = document.getElementById('note-list');
@@ -68,7 +67,7 @@
 
     // Load a note into the editor
     const loadNote = (noteId) => {
-        fetch(`/Elevate/config/notebook-get-note.php?id=${noteId}`) // Ensure this path is correct
+        fetch(`/Elevate/config/notebook-get-note.php?id=${noteId}`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('note-title').value = data.title;
@@ -83,7 +82,7 @@
     document.getElementById('save-note').addEventListener('click', () => {
         const title = document.getElementById('note-title').value;
         const content = quill.getContents();
-        fetch('/Elevate/config/notebook-api.php', { // Ensure this path is correct
+        fetch('/Elevate/config/notebook-api.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -106,7 +105,7 @@
     document.getElementById('update-note').addEventListener('click', () => {
         const title = document.getElementById('note-title').value;
         const content = quill.getContents();
-        fetch('/Elevate/config/notebook-update.php', { // Ensure this path is correct
+        fetch('/Elevate/config/notebook-update.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -40,30 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
       if (data.status === "success") {
-        alert(data.message);
+        window.showToast(data.message);
       } else {
         console.error(data.message);
+        window.showToast(data.message || "Error updating profile");
       }
     } catch (error) {
       console.error("Error updating user data:", error);
-    }
-  }
-
-  // Delete account
-  async function deleteAccount() {
-    if (confirm("Are you sure you want to delete your account?")) {
-      try {
-        const response = await fetch(endpoint, { method: "DELETE" });
-        const data = await response.json();
-        if (data.status === "success") {
-          alert(data.message);
-          window.location.href = "../views/login.php";
-        } else {
-          console.error(data.message);
-        }
-      } catch (error) {
-        console.error("Error deleting account:", error);
-      }
+      window.showToast("An error occurred while updating your profile");
     }
   }
 

@@ -16,7 +16,7 @@ async function updateTaskStatus(event) {
   const completed = checkbox.checked ? 1 : 0;
 
   try {
-    const response = await fetch("./config/update_task.php", {
+    const response = await fetch("../config/update_task.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -128,7 +128,7 @@ dropdownItems.forEach((item) => {
 // Function to send goal action request
 const sendGoalAction = async (action, goalId) => {
   try {
-    const response = await fetch("./config/goal-management.php", {
+    const response = await fetch("../config/goal-management.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -140,9 +140,9 @@ const sendGoalAction = async (action, goalId) => {
 
     if (data.success) {
       updateUI(action, goalId);
-      window.showToast(data.message);
+      showNotification(data.message);
     } else {
-      alert(`Error: ${data.error}`);
+      showNotification(data.error, "error");
     }
   } catch (error) {
     console.error("Error:", error);

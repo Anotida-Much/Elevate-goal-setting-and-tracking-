@@ -15,6 +15,91 @@
     <link rel="stylesheet" href="../assets/vendor/aos/aos.css" />
     <link rel="stylesheet" href="../assets/vendor/quill/quill.snow.css">
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <style>
+        /* Filter classes and default status styling */
+        .in_progress, article.card[class*="in_progress"] { 
+            border-left: 4px solid #0dcaf0;
+            border-right: 4px solid #0dcaf0;
+        }
+        .on_hold, article.card[class*="on_hold"] { 
+            border-left: 4px solid #ffc107;
+            border-right: 4px solid #ffc107;
+        }
+        .completed, article.card[class*="completed"] { 
+            border-left: 4px solid #198754;
+            border-right: 4px solid #198754;
+        }
+        .missed, article.card[class*="missed"] { 
+            border-left: 4px solid #dc3545;
+            border-right: 4px solid #dc3545;
+        }
+        
+        /* Card styling */
+        article.card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 1.5rem;
+        }
+
+        article.card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* Search bar styling */
+        .search-bar input {
+            padding-right: 2.5rem;
+        }
+        .search-bar i {
+            color: #6c757d;
+            pointer-events: none;
+        }
+        
+        /* Filter and sort buttons */
+        .filter-buttons, .sort-buttons {
+            margin-left: 1rem;
+        }
+
+        /* Task styling */
+        .task.completed label {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+
+        /* Status badge styling */
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Ensure dropdown items are clickable */
+        .dropdown-item {
+            cursor: pointer;
+        }
+
+        /* Hide elements with display: none */
+        [style*="display: none"] {
+            display: none !important;
+        }
+
+        /* Status badge colors */
+        #goal-status .badge {
+            color: white;
+        }
+        .in_progress #goal-status .badge {
+            background-color: #0dcaf0 !important;
+        }
+        .on_hold #goal-status .badge {
+            background-color: #ffc107 !important;
+        }
+        .completed #goal-status .badge {
+            background-color: #198754 !important;
+        }
+        .missed #goal-status .badge {
+            background-color: #dc3545 !important;
+        }
+    </style>
     <title>Elevate: My Goals</title>
 </head>
 
@@ -28,7 +113,8 @@
     <div class="row position-relative mt-5 pt-5 me-auto">
         <div class="d-flex align-items-center justify-content-end">
             <div class="col-auto search-bar position-relative me-5 w-50">
-                <input type="search" class="form-control" name="query" placeholder="Search goals..."><i class="bi bi-search position-absolute top-50 end-0 translate-middle"></i>
+                <input type="search" class="form-control" name="query" placeholder="Search goals...">
+                <i class="bi bi-search position-absolute top-50 end-0 translate-middle"></i>
             </div>
 
             <!-- Filter Buttons -->
@@ -38,8 +124,8 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="filterDropdown">
                     <li><button class="dropdown-item filter-btn" data-filter="*">Show All</button></li>
-                    <li><button class="dropdown-item filter-btn" data-filter=".in-progress">In Progress</button></li>
-                    <li><button class="dropdown-item filter-btn" data-filter=".on-hold">On Hold</button></li>
+                    <li><button class="dropdown-item filter-btn" data-filter=".in_progress">In Progress</button></li>
+                    <li><button class="dropdown-item filter-btn" data-filter=".on_hold">On Hold</button></li>
                     <li><button class="dropdown-item filter-btn" data-filter=".completed">Completed</button></li>
                     <li><button class="dropdown-item filter-btn" data-filter=".missed">Missed</button></li>
                 </ul>
@@ -71,9 +157,11 @@
     <main class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <?php foreach ($goal_data as $data) { ?>
+                <?php foreach ($goal_data as $data) { 
+                    $statusClass = strtolower(str_replace(' ', '-', $data['goal_status']));
+                ?>
                     <!-- beginning of goal container -->
-                    <article class="card border-bottom my-5">
+                    <article class="card border-bottom my-5 <?php echo $statusClass; ?>">
                         <header class="card-body d-flex">
                             <img src="../assets/img/time.jpg" alt="Goal Image" class="rounded" width="50" height="50">
                             <div class="flex-grow-1 mx-3">
@@ -145,8 +233,10 @@
     <script src="../assets/vendor/aos/aos.js"></script>
     <script src="../assets/vendor/quill/quill.js"></script>
     <script src="../assets/js/display.js"></script>
+    <script src="../assets/js/goal-filters.js"></script>
 
     <?php include "footer.php" ?>
+    <?php include "notebook.php" ?>
 </body>
 
 </html>

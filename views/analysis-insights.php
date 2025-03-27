@@ -260,6 +260,7 @@
     <script src="../assets/js/theme.js"></script>
 
     <?php include "footer.php" ?>
+    <?php include "notebook.php" ?>
 </body>
 
 </html>

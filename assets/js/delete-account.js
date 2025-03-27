@@ -1,18 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   const deleteAccountBtn = document.getElementById("deleteAccountBtn");
-  console.log(deleteAccountBtn);
   const endpoint = "../config/account-settings.php";
 
   // Handle Delete Account button click
   if (deleteAccountBtn) {
-    deleteAccountBtn.addEventListener("click", async () => {
+    deleteAccountBtn.addEventListener("click", async (event) => {
+      event.preventDefault(); // Prevent the default link behavior
+
       if (
         confirm(
           "Are you sure you want to delete your account? This action cannot be undone."
         )
       ) {
         try {
-          const response = await fetch(endpoint, { method: "DELETE" });
+          const response = await fetch(endpoint, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
           const data = await response.json();
 
           if (data.status === "success") {
@@ -21,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "../views/login.php";
           } else {
             console.error(data.message);
-            alert("Error: " + data.message);
+            window.showToast(data.message || "Error deleting account");
           }
         } catch (error) {
           console.error("Error deleting account:", error);
-          window.showToast(data.message);
+          window.showToast("An error occurred while deleting your account");
         }
       }
     });
