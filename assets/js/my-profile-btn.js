@@ -16,9 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("user_email").value = data.data.email;
       } else {
         console.error(data.message);
+        showError(data.message);
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
+      showError("Error fetching user data");
     }
   }
 
@@ -40,14 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
       if (data.status === "success") {
-        window.showToast(data.message);
+        showSuccess(data.message);
       } else {
         console.error(data.message);
-        window.showToast(data.message || "Error updating profile");
+        showError(data.message || "Error updating profile");
       }
     } catch (error) {
       console.error("Error updating user data:", error);
-      window.showToast("An error occurred while updating your profile");
+      showError("An error occurred while updating your profile");
     }
   }
 

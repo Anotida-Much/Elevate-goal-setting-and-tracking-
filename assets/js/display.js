@@ -35,11 +35,14 @@ async function updateTaskStatus(event) {
       checkAllTasksCompleted(goalContainer);
       updateProgressBars();
       updateGoalProgressBars();
+      showSuccess(data.message);
     } else {
       console.error("Error updating task status");
+      showError(data.message || "Error updating task status");
     }
   } catch (error) {
     console.error("Error:", error);
+    showError("An error occurred while updating the task");
   }
 }
 
@@ -140,12 +143,13 @@ const sendGoalAction = async (action, goalId) => {
 
     if (data.success) {
       updateUI(action, goalId);
-      showNotification(data.message);
+      showSuccess(data.message);
     } else {
-      showNotification(data.error, "error");
+      showError(data.error || "Error performing action");
     }
   } catch (error) {
     console.error("Error:", error);
+    showError("An error occurred while performing the action");
   }
 };
 

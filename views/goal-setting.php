@@ -8,11 +8,12 @@
     <meta name="keywords" content="goal setting, goal tracking, productivity, personal development, Elevate">
     <meta name="author" content="Anotida Muchinhairi">
     <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons.css" />
-    <link rel="stylesheet" href="../assets/vendor/aos/aos.css" />
-    <link rel="stylesheet" href="../assets/vendor/quill/quill.snow.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+    <link rel="stylesheet" href="../node_modules/quill/dist/quill.snow.css">
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
     <title>Elevate: Goal Setting</title>
 </head>
 
@@ -39,7 +40,7 @@
 
                             <div class="mb-3">
                                 <label for="goal-category" class="form-label">Goal Category:</label>
-                                <select name="goal-category" class="form-select" id="goal-category" required>
+                                <select name="goal-category" class="form-select z-index-3" id="goal-category" required>
                                     <option value="">Select</option>
                                     <option value="Work and Career">Work and Career</option>
                                     <option value="Health and Wellness">Health and Wellness</option>
@@ -155,8 +156,10 @@
         </div>
     </div>
 
-    <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../node_modules/aos/dist/aos.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../assets/js/notifications.js"></script>
     <script src="../assets/js/goal-setting.js"></script>
     <script>
         function handleFormSubmit(event) {
@@ -183,15 +186,15 @@
                     // Handle the response data
                     console.log(data);
                     if (data.status === 'success') {
-                        alert('Goal saved successfully!');
-                        form.reset(); // Clear the form
+                        showSuccess('Goal saved successfully!');
+                        window.location.href = 'index.php';
                     } else {
-                        alert('An error occurred: ' + data.message);
+                        showError('An error occurred: ' + data.message);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred while saving the goal: ' + error.message);
+                    showError('An error occurred while saving the goal: ' + error.message);
                 });
         }
     </script>

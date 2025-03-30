@@ -1,13 +1,13 @@
 // Search functionality
 const searchInput = document.querySelector('input[name="query"]');
-const goalArticles = document.querySelectorAll("article.card");
+const goalArticles = document.querySelectorAll("#goals-container article");
 
 searchInput.addEventListener("input", (e) => {
   const searchTerm = e.target.value.toLowerCase();
 
   goalArticles.forEach((article) => {
     const title = article
-      .querySelector("#card-title")
+      .querySelector(".card-title")
       .textContent.toLowerCase();
     const description = article
       .querySelector(".card-text")
@@ -45,8 +45,6 @@ filterButtons.forEach((button) => {
         .querySelector("#goal-status .badge")
         .textContent.trim()
         .toLowerCase();
-
-      // Convert status to class name format
       const statusClass = status.replace(/\s+/g, "-");
 
       if (filter === "*" || filter === `.${statusClass}`) {
@@ -59,25 +57,23 @@ filterButtons.forEach((button) => {
 });
 
 // Sort functionality
-const sortButtons = document.querySelectorAll(
-  "#sortDropdown + .dropdown-menu .dropdown-item"
-);
+const sortButtons = document.querySelectorAll(".sort-btn");
+const goalsContainer = document.getElementById("goals-container");
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    const sortBy = e.target.textContent.trim();
+    const sortBy = e.target.dataset.sort;
 
     // Update the dropdown button text
     const dropdownButton = document.getElementById("sortDropdown");
-    dropdownButton.textContent = sortBy;
+    dropdownButton.textContent = e.target.textContent;
 
-    const container = document.querySelector(".col-md-10");
     const articles = Array.from(goalArticles);
 
     articles.sort((a, b) => {
       switch (sortBy) {
-        case "Due Date":
+        case "due-date":
           return compareDates(
             a
               .querySelector(".card-footer .col:nth-child(2) span")
@@ -86,9 +82,9 @@ sortButtons.forEach((button) => {
               .querySelector(".card-footer .col:nth-child(2) span")
               .textContent.replace("Due Date: ", "")
           );
-        case "Progress":
+        case "progress":
           return compareProgress(a, b);
-        case "Starting Date":
+        case "start-date":
           return compareDates(
             a
               .querySelector(".card-footer .col:nth-child(2) span")
@@ -103,16 +99,11 @@ sortButtons.forEach((button) => {
     });
 
     // Clear and reorder the articles in the DOM
-    container.innerHTML = "";
-    articles.forEach((article) => container.appendChild(article));
+    articles.forEach((article) => goalsContainer.appendChild(article));
   });
 });
 
 // Helper functions
-function getStatusClass(status) {
-  return status.toLowerCase().replace(/\s+/g, "-");
-}
-
 function compareDates(dateA, dateB) {
   return new Date(dateA) - new Date(dateB);
 }

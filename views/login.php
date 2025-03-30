@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// If user is already logged in, redirect to home page
+if (isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +19,14 @@
         <meta name="author" content="Anotida Muchinhairi">
 
         <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
-        <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
         <title>Elevate: Login Page</title>
     </head>
 
@@ -58,7 +72,6 @@
                         echo '<p style="color:red;">' . $error . '</p>';
                     }
                 } else {
-                    session_start();
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];
@@ -69,6 +82,14 @@
                 }
             }
         ?>
+
+        <?php if (!empty($errors)): ?>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              showError('<?php echo implode('<br>', $errors); ?>');
+            });
+          </script>
+        <?php endif; ?>
 
         <div class="container align-content-center mt-5 rounded">
             <main class="form col-md-8 mx-auto shadow-sm border-bottom border-5 border-primary">
@@ -109,7 +130,15 @@
             </main>
         </div>
 
+        <!-- Vendor Scripts -->
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../node_modules/aos/dist/aos.js"></script>
+        <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+        <!-- Custom Scripts -->
+        <script src="../assets/js/notifications.js"></script>
         <script src="../assets/js/toggle-password-visibility.js"></script>
+        <script src="../assets/js/login.js"></script>
     </body>
 
 </html>

@@ -9,9 +9,14 @@
   <meta name="author" content="Anotida Muchinhairi">
 
   <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
-  <link href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
-  <link href="../assets/css/main.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
   <title>Elevate - My Profile</title>
 </head>
 
@@ -29,8 +34,6 @@
   $result = $stmt->get_result();
   $user = $result->fetch_assoc();
   ?>
-
-  <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
 
   <main id="main" class="container-fluid mt-5 pt-5">
     <div class="container section-title" data-aos="fade-up">
@@ -194,10 +197,15 @@
     </section>
   </main>
 
-  <script src="../assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/toasts.js"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../node_modules/aos/dist/aos.js"></script>
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../assets/js/notifications.js"></script>
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/my-profile-btn.js"></script>
+  <script src="../assets/js/users-profile.js"></script>
 </body>
 
 </html>

@@ -15,12 +15,19 @@ require_once '../config/auth.php';
   <meta name="author" content="Anotida Muchinhairi">
 
   <link rel="shortcut icon" href="/Elevate/assets/img/logo.jpg" type="image/x-icon">
-  <link rel="stylesheet" href="/Elevate/assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="/Elevate/assets/vendor/aos/aos.css" />
-  <link rel="stylesheet" href="/Elevate/assets/vendor/quill/quill.snow.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/Elevate/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="/Elevate/node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+  <!-- Quill CSS -->
+  <link rel="stylesheet" href="/Elevate/node_modules/quill/dist/quill.snow.css">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="/Elevate/node_modules/aos/dist/aos.css" />
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="/Elevate/assets/css/main.css" />
-  <title>Elevate: Goal Setting and Tracking App</title>
+  <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+  <title>Elevate: Your Goal Setting Companion</title>
 </head>
 
 <body id="index-main">
@@ -30,7 +37,8 @@ require_once '../config/auth.php';
 
   <!-- bottom right button (Add Goal) -->
   <div id="add-btn">
-    <a href="../views/goal-setting.php" id="set-btn-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Add a goal">
+    <a href="../views/goal-setting.php" id="set-btn-link" data-bs-toggle="tooltip" data-bs-placement="left"
+      title="Add a goal">
       <i class="bi bi-plus-circle-fill fs-1 text-primary"></i></a>
   </div>
 
@@ -60,10 +68,10 @@ require_once '../config/auth.php';
       <div class="row gy-4 d-flex justify-content-center">
         <div class="col-xl-3 col-sm-6 col-md-4 d-flex" data-aos="flip-right" data-aos-delay="50">
           <div class="w-100 p-3 border shadow-lg rounded statistics-card" id="current-time">
-            <div class="row align-items-center">
+            <div class="row d-flex align-items-center justify-content-between">
               <div class="col-auto"><i class="bi bi-calendar-plus icon text-primary"></i></div>
               <h4 class="col-auto my-auto ps-0">Today</h4>
-                <p class="col-auto badge bg-primary position-fixed end-0 px-4 py-2 me-4 mt-1" id="today"></p>
+              <p class="col-auto badge bg-primary position-relative float-end py-2 px-3" id="today"></p>
             </div>
             <div id="date-info">
             </div>
@@ -155,7 +163,7 @@ require_once '../config/auth.php';
                     <i class="bi bi-eye me-2"></i>View Goal
                   </a>
                   <header class="card-body d-flex">
-                    <img src="../assets/img/time.jpg" alt="Goal Image" class="rounded" width="50" height="50">
+                    <img src="../assets/img/goal.png" alt="Goal Image" class="rounded" width="50" height="50">
                     <div class="flex-grow-1 mx-3">
                       <h4 class="card-title" id="card-title">
                         <?php echo $goal['goal_name']; ?>
@@ -206,149 +214,121 @@ require_once '../config/auth.php';
   <!-- Motivation Section -->
   <section id="motivation" class="motivation section my-0 py-5 gy-0">
     <div class="container section-title text-center">
-        <h3>Daily Inspiration</h3>
-        <p>Stay motivated with daily quotes and insights</p>
+      <h3>Daily Inspiration</h3>
+      <p>Stay motivated with daily quotes and insights</p>
     </div>
 
     <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-            <div class="col-lg-6">
-                <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                        <div class="text-center mb-4">
-                            <h4 class="text-info mb-3">Daily Inspiration</h4>
-                            <div class="quote-container p-4 bg-light rounded-3">
-                                <blockquote class="mb-0">
-                                    <p class="lead" id="randomQuote"></p>
-                                    <footer class="blockquote-footer mt-3" id="author"></footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="quote-actions mt-4">
-                            <button class="btn btn-outline-primary me-2" onclick="refreshQuote()">
-                                <i class="bi bi-arrow-clockwise"></i> New Quote
-                            </button>
-                            <button class="btn btn-outline-success" onclick="shareQuote()">
-                                <i class="bi bi-share"></i> Share
-                            </button>
-                        </div>
-                    </div>
+      <div class="row gy-4">
+        <div class="col-lg-6">
+          <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+              <div class="text-center mb-4">
+                <h4 class="text-info mb-3">Daily Inspiration</h4>
+                <div class="quote-container p-4 bg-light rounded-3">
+                  <blockquote class="mb-0">
+                    <p class="lead" id="randomQuote"></p>
+                    <footer class="blockquote-footer mt-3" id="author"></footer>
+                  </blockquote>
                 </div>
+              </div>
+              <div class="quote-actions mt-4">
+                <button class="btn btn-outline-primary me-2" onclick="refreshQuote()">
+                  <i class="bi bi-arrow-clockwise"></i> New Quote
+                </button>
+                <button class="btn btn-outline-success" onclick="shareQuote()">
+                  <i class="bi bi-share"></i> Share
+                </button>
+              </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Top 5 Goals</h4>
-                        <canvas id="top-goals" style="max-height: 300px;"></canvas>
-                        <script>
-                            document.addEventListener("DOMContentLoaded", () => {
-                                fetch("../config/analysis/top-goals.php")
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const labels = data.map(item => item.goal_name);
-                                        const progressPercentages = data.map(item => item.progress_percentage);
-                                        
-                                        new Chart(document.getElementById('top-goals').getContext('2d'), {
-                                            type: 'bar',
-                                            data: {
-                                                labels: labels,
-                                                datasets: [{
-                                                    label: 'Progress (%)',
-                                                    data: progressPercentages,
-                                                    backgroundColor: '#0d6efd',
-                                                    borderColor: '#0d6efd',
-                                                    borderWidth: 1
-                                                }]
-                                            },
-                                            options: {
-                                                responsive: true,
-                                                maintainAspectRatio: false,
-                                                scales: {
-                                                    y: {
-                                                        beginAtZero: true,
-                                                        max: 100
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="col-lg-6">
+          <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-delay="500">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Top 5 Goals</h4>
+              <canvas id="top-goals" style="max-height: 300px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  fetch("../config/analysis/top-goals.php")
+                    .then(response => response.json())
+                    .then(data => {
+                      const labels = data.map(item => item.goal_name);
+                      const progressPercentages = data.map(item => item.progress_percentage);
+
+                      new Chart(document.getElementById('top-goals').getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                          labels: labels,
+                          datasets: [{
+                            label: 'Progress (%)',
+                            data: progressPercentages,
+                            backgroundColor: '#0d6efd',
+                            borderColor: '#0d6efd',
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          responsive: true,
+                          maintainAspectRatio: false,
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                              max: 100
+                            }
+                          }
+                        }
+                      });
+                    });
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="cta-section py-5 bg-primary text-white">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8 text-center text-lg-start">
-                <h2 class="display-4 fw-bold mb-3">Ready to Achieve Your Goals?</h2>
-                <p class="lead mb-0">Start your journey towards success today. Set your goals, track your progress, and celebrate your achievements.</p>
-            </div>
-            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
-                <a href="./goal-setting.php" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-sm">
-                    Create Your First Goal
-                </a>
-            </div>
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-center text-lg-start">
+          <h2 class="display-4 fw-bold mb-3">Ready to Achieve Your Goals?</h2>
+          <p class="lead mb-0">Start your journey towards success today. Set your goals, track your progress, and
+            celebrate your achievements.</p>
         </div>
-    </div>
-  </section>
-
-  <!-- Notebook -->
-  <button id="notebook-btn-custom-position" class="btn btn-primary rounded-pill shadow-md pe-5 py-2 border-0"
-    data-bs-toggle="modal" data-bs-target="#notebookModal">
-    <i class="bi bi-pencil-square"></i> Open Notebook
-  </button>
-
-  <div class="modal fade" id="notebookModal" tabindex="-1" aria-labelledby="notebookModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="text-primary"><i class="bi bi-pencil-square fs-1"></i>Notebook</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body container">
-          <div class="row">
-            <div class="col-xs-12 col-md-4 mb-3 shadow-sm">
-              <h5>All Notes</h5>
-              <ul id="note-list" class="list-group list-group-flush d-flex flex-row flex-md-column">
-              </ul>
-            </div>
-            <div class="col-xs-12 col-md-8 p-0">
-              <input type="text" id="note-title" class="form-control border-bottom-0" value=""
-                placeholder="Note Title" required>
-              <div id="quill-editor" style="height: 250px;"></div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button id="edit-note" class="btn btn-primary m-2 d-none">Edit Note</button>
-          <button id="save-note" class="btn btn-success m-2">Save Note</button>
-          <button id="update-note" class="btn btn-success m-2 d-none">Save Update</button>
+        <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+          <a href="./goal-setting.php" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-sm">
+            Create Your First Goal
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  <!-- Notebook -->
+  <?php include "notebook.php" ?>
 
-  <script src="/Elevate/assets/vendor/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/Elevate/assets/vendor/aos/aos.js"></script>
-  <script src="/Elevate/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="/Elevate/assets/vendor/typed.js/typed.umd.js"></script>
+  <!-- Footer -->
+  <?php include "footer.php" ?>
+
+  <!-- Vendor Scripts -->
+  <script src="/Elevate/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/Elevate/node_modules/aos/dist/aos.js"></script>
+  <script src="/Elevate/node_modules/chart.js/dist/chart.umd.js"></script>
+  <script src="/Elevate/node_modules/typed.js/dist/typed.umd.js"></script>
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="/Elevate/assets/js/notifications.js"></script>
   <script src="/Elevate/assets/js/main.js"></script>
+  <script src="/Elevate/assets/js/notebook.js"></script>
   <script src="/Elevate/assets/js/index.js"></script>
-  <script src="/Elevate/assets/js/toasts.js"></script>
   <script src="/Elevate/assets/js/theme.js"></script>
   <script src="/Elevate/assets/js/live-clock.js"></script>
   <script src="/Elevate/assets/js/greeting.js"></script>
   <script src="/Elevate/assets/js/delete-account.js"></script>
-  
-  <?php include "notebook.php" ?>
-  <?php include "footer.php" ?>
 </body>
 
 </html>

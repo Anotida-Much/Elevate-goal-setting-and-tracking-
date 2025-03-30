@@ -34,7 +34,27 @@ async function showConfirmDialog(message) {
   return result.isConfirmed;
 }
 
+// Function to show error notification
+function showError(message) {
+  Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: message,
+  });
+}
+
+// Function to show success notification
+function showSuccess(message) {
+  Swal.fire({
+    icon: "success",
+    title: "Success",
+    text: message,
+  });
+}
+
 // Make functions globally accessible
 window.showNotification = showNotification;
 window.showConfirmDialog = showConfirmDialog;
-window.showToast = (message) => showNotification(message); // For backward compatibility
+window.showError = showError;
+window.showSuccess = showSuccess;
+window.showToast = (message) => showNotification(message);

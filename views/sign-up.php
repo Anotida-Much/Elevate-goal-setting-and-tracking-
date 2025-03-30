@@ -10,10 +10,15 @@
     <meta name="author" content="Anotida Muchinhairi">
 
     <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap-icons.css" />
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/main.css" />
-    <title>Elevate - Sign Up</title>
+    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <title>Elevate: Sign Up</title>
 </head>
 
 <body class="mt-5 mb-5">
@@ -159,7 +164,22 @@
         </main>
     </div>
 
+    <!-- Vendor Scripts -->
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../node_modules/aos/dist/aos.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="../assets/js/notifications.js"></script>
     <script src="../assets/js/toggle-password-visibility.js"></script>
+    <script src="../assets/js/sign-up.js"></script>
+    <?php if (!empty($errors)): ?>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          showError('<?php echo implode('<br>', $errors); ?>');
+        });
+      </script>
+    <?php endif; ?>
 </body>
 
 </html>

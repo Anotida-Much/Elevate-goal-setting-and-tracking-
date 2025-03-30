@@ -1,0 +1,21 @@
+{
+  "name": "elevate",
+  "version": "1.0.0",
+  "description": "A goal setting and tracking web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
+    "chart.js": "^4.4.1",
+    "quill": "^1.3.7",
+    "sweetalert2": "^11.17.2",
+    "typed.js": "^2.1.0"
+  }
+}

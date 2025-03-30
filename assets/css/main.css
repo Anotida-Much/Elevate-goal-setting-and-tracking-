@@ -6,6 +6,35 @@
 /* Import Poppins font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
+/* Font imports */
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 /*--------------------------------------------------------------
 # Font & Color Variables
 --------------------------------------------------------------*/
@@ -18,9 +47,12 @@
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
   scroll-behavior: smooth;
-  --primary-color: #0d6efd;
-  --text-color: #212529;
+  --primary-color: #4a90e2;
+  --text-color: #333;
   --font-family-base: "Poppins", sans-serif;
+  --secondary-color: #2c3e50;
+  --light-gray: #f5f6fa;
+  --border-color: #dcdde1;
 }
 
 .light-background {
@@ -42,9 +74,9 @@
 --------------------------------------------------------------*/
 body {
   color: var(--text-color);
-  background-color: var(--surface-color);
-  font-family: var(--font-family-base);
-  line-height: 1.5;
+  background-color: var(--light-gray);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 }
 
@@ -511,6 +543,7 @@ h4,
   overflow: scroll;
 }
 
+/* Notebook Button */
 #notebook-btn-custom-position {
   position: fixed;
   top: 30vh;
@@ -518,13 +551,109 @@ h4,
   transform: translate(58%, -50%);
   clip-path: inset(0 10% 0 0);
   text-align: left;
-  transition: 1s;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #notebook-btn-custom-position:hover {
   transform: translate(15%, -50%);
-  transition: 1500ms;
-  background-color: #059652;
+  transition: all 0.5s ease;
+  background-color: var(--accent-color);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Notebook Modal */
+#notebookModal .modal-content {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#notebookModal .modal-header {
+  border-bottom: 2px solid #e9ecef;
+  background-color: #ffffff;
+  border-radius: 15px 15px 0 0;
+  padding: 1.5rem;
+}
+
+#notebookModal .modal-footer {
+  border-top: 2px solid #e9ecef;
+  background-color: #ffffff;
+  border-radius: 0 0 15px 15px;
+  padding: 1.5rem;
+}
+
+#notebookModal .list-group-item {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid #e9ecef;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+#notebookModal .list-group-item:hover {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  transform: translateX(5px);
+}
+
+#notebookModal .list-group-item.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+}
+
+#notebookModal #note-title {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border: 2px solid #e9ecef;
+  border-radius: 8px 8px 0 0;
+  padding: 1rem;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+#notebookModal #note-title:focus {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+#notebookModal .ql-toolbar {
+  background-color: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 0;
+  border-top: none;
+}
+
+#notebookModal .ql-container {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border: 2px solid #e9ecef;
+  border-radius: 0 0 8px 8px;
+  min-height: 300px;
+}
+
+#notebookModal .ql-editor {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#notebookModal .ql-picker {
+  color: var(--text-primary);
+}
+
+#notebookModal .ql-stroke {
+  stroke: var(--text-primary);
+}
+
+#notebookModal .ql-fill {
+  fill: var(--text-primary);
 }
 
 #navbarSupportedContentLabel > img {
@@ -583,10 +712,12 @@ h4,
 /* CTA Section Styles */
 .cta-section {
   background: linear-gradient(45deg, var(--primary-color), #0056b3);
+  height: 60vh;
   margin: 0;
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
+  align-content: center;
 }
 
 .cta-section::before {
@@ -596,7 +727,8 @@ h4,
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("../img/pattern.png") repeat;
+  background: url("../img/Achievement.png") center center no-repeat fixed;
+  background-size: contain;
   opacity: 0.1;
 }
 
