@@ -1,0 +1,27 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Set base directory
+RewriteBase /Elevate/
+
+# Handle 404 errors
+ErrorDocument 404 /Elevate/views/404.php
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect config files
+<FilesMatch "^(config\.php|database\.php|auth\.php)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Handle PHP errors
+php_flag display_errors off
+php_value error_reporting E_ALL 

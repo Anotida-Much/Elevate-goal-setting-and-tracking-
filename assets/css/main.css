@@ -6,35 +6,6 @@
 /* Import Poppins font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-/* Font imports */
-@font-face {
-  font-family: "Poppins";
-  src: url("../font/Poppins-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../font/Poppins-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../font/Poppins-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../font/Poppins-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
 /*--------------------------------------------------------------
 # Font & Color Variables
 --------------------------------------------------------------*/
@@ -78,6 +49,9 @@ body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h2,
@@ -151,7 +125,6 @@ a:hover {
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
-section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -687,9 +660,33 @@ h4,
 
 /* Footer */
 #main-footer {
-  background: linear-gradient(to bottom, #2e4053, #1a1d23);
-  padding: 20px;
+  flex-shrink: 0;
+  background-color: #198754; /* Bootstrap success color */
+  padding: 2rem 0;
+  margin-top: auto;
+  color: white;
+}
+
+#main-footer a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+#main-footer a:hover {
+  color: white;
+}
+
+#main-footer .text-primary {
   color: white !important;
+}
+
+#main-footer .copyright {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.full-width-footer {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-grad {
@@ -887,4 +884,79 @@ h4,
 /* Card Height Fix */
 .card.h-100 {
   min-height: 400px;
+}
+
+/* Top Navbar */
+.top-navbar {
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+}
+
+.top-navbar .btn-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.top-navbar .dropdown-menu {
+  margin-top: 0.5rem;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar .dropdown-item {
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+}
+
+.top-navbar .dropdown-item:hover {
+  background-color: var(--light-gray);
+  color: var(--accent-color);
+}
+
+/* Main Layout */
+.main-content {
+  flex: 1 0 auto;
+  margin-left: 250px;
+  padding: 2rem 3rem;
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 60px);
+  max-width: calc(100% - 250px);
+  margin-top: 60px; /* Add space for top navbar */
+}
+
+/* Container Spacing */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+/* Card Spacing */
+.card {
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Section Spacing */
+.section {
+  padding: 2rem 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+    max-width: 100%;
+    margin-top: 60px;
+  }
+
+  .container-fluid {
+    padding: 0 1rem;
+  }
 }

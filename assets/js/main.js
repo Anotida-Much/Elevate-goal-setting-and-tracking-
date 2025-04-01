@@ -275,8 +275,8 @@ function calculateDays() {
   todayDt.textContent = `${today.toLocaleDateString()}`;
   dateInfo.innerHTML = `
     <div class="row justify-content-between">
-      <p class="col-auto">Days Gone: <strong>${daysPassed}</strong></p>
-      <p class="col-auto">Days Left: <strong>${daysLeft}</strong></p>
+      <span class="col-auto">Days Passed: <strong>${daysPassed}</strong></span>
+      <span class="col-auto">Days Left: <strong>${daysLeft}</strong></span>
     </div>
   `;
 }
@@ -290,8 +290,7 @@ setInterval(calculateDays, 86400000); // 86400000 milliseconds = 1 day
 const timeout = 10 * 60 * 1000;
 let timer = setTimeout(logoutUser, timeout);
 
-document.getElementById("logout-button1").addEventListener("click", logoutUser);
-document.getElementById("logout-button2").addEventListener("click", logoutUser);
+document.getElementById("logoutBtn").addEventListener("click", logoutUser);
 
 document.addEventListener("mousemove", resetTimer);
 document.addEventListener("keydown", resetTimer);
@@ -307,7 +306,7 @@ async function logoutUser() {
   try {
     const response = await fetch("../config/logout.php");
     if (response.ok) {
-      window.location.href = "../views/login.php";
+      window.location.href = "../index.php";
     } else {
       console.error("Failed to log out user:", response.status);
     }

@@ -3,7 +3,7 @@ session_start();
 
 // If user is already logged in, redirect to home page
 if (isset($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 }
 ?>
@@ -77,7 +77,7 @@ if (isset($_SESSION['username'])) {
                     $_SESSION['email'] = $user['email'];
 
                     // Redirect to home page
-                    header('Location: index.php');
+                    header('Location: dashboard.php');
                     exit;
                 }
             }

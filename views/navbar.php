@@ -1,202 +1,296 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm lh-lg z-index-2000">
-  <div class="container-fluid">
-    <!-- Hamburger Menu Icon -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Profile Information -->
-    <div class="d-flex align-items-center me-3 text-primary">
-      <img src="../assets/img/logo.jpg" width="32" height="32" class="rounded-circle me-2" />
-      <span><b>ELEVATE</b></span>
-    </div>
-    <!-- Offcanvas Menu -->
-    <div class="offcanvas offcanvas-start d-lg-none w-xs-50" tabindex="-1" id="offcanvasNavbar"
-      aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header position-relative">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-          <img src="../assets/img/logo.jpg" class="mh-20 w-100" />
-        </h5>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto my-2 mb-lg-0">
-          <!-- Primary Menu Items -->
-          <li class="nav-item">
-            <a class="nav-link" href="index.php" aria-selected="true">
-              <i class="m-3 bi bi-house-door"></i> Home
+<!-- Top Navbar -->
+<nav class="top-navbar navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center">
+            <button class="btn btn-link text-white d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#mobileNav" aria-controls="mobileNav">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <a class="navbar-brand d-none d-lg-block logo" href="../index.php">
+                <img src="../assets/img/logo.jpg" alt="Elevate Logo" class="rounded-pill">
             </a>
-          </li>
-          <!-- Goal Management Dropdown -->
-          <li class="nav-item dropdown my-2">
-            <a class="nav-link dropdown-toggle" href="#" id="goalManagementDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Management">
-              <i class="m-3 bi bi-clipboard-check"></i> Goal Management
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="goalManagementDropdown">
-              <li>
-                <a class="dropdown-item" href="goal-setting.php">
-                  <i class="bi bi-calendar-plus"></i> Set Goal
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="display-goals.php">
-                  <i class="bi bi-list"></i> View All Goals
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="analysis-insights.php">
-                  <i class="bi bi-list-check"></i> Analysis and Insights
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- Support Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" aria-label="Support">
-              <i class="m-3 bi bi-chat-text"></i> Support
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdown">
-              <li>
-                <a class="dropdown-item" href="support.php#online-support">
-                  <i class="bi bi-headset"></i> Online Support
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="support.php#contact-us">
-                  <i class="bi bi-envelope"></i> Contact Us
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="support.php#feedback">
-                  <i class="bi bi-chat-text"></i> Feedback
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- Account Settings Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account Settings">
-              <i class="m-3 bi bi-person-circle"></i> Account Settings
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdown">
-              <li>
-                <a class="dropdown-item" href="users-profile.php">
-                  <i class="bi bi-person-circle"></i> My Profile
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#" id="deleteAccountBtn">
-                  <i class="bi bi-person-dash"></i> Delete Account
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="mailto:muchinhairiano@gmail.com">
-                  <i class="bi bi-question-circle"></i> Need Help
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link logout-btn" href="../config/logout.php" id="logout-button1">
-              <i class="m-3 bi bi-box-arrow-right"></i> Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+        </div>
 
-    <!-- Horizontal Menu for Large Screens -->
-    <div class="collapse navbar-collapse d-lg-block d-none" id="navbarSupportedContentHorizontal">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <!-- Primary Menu Items -->
-        <li class="nav-item">
-          <a class="nav-link" href="index.php" aria-selected="true">
-            <i class="m-3 bi bi-house-door"></i> Home
-          </a>
-        </li>
-        <!-- Goal Management Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="goalManagementDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Management">
-            <i class="m-3 bi bi-clipboard-check"></i> Goal Management
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="goalManagementDropdownHorizontal">
-            <li>
-              <a class="dropdown-item" href="goal-setting.php">
-                <i class="bi bi-calendar-plus"></i> Set Goal
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="display-goals.php">
-                <i class="bi bi-list"></i> View All Goals
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="analysis-insights.php">
-                <i class="bi bi-list-check"></i> Analysis and Insights
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- Support Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="supportDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Support">
-            <i class="m-3 bi bi-chat-text"></i> Support
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdownHorizontal">
-            <li>
-              <a class="dropdown-item" href="support.php#online-support">
-                <i class="bi bi-headset"></i> Online Support
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="support.php#contact-us">
-                <i class="bi bi-envelope"></i> Contact Us
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="support.php#feedback">
-                <i class="bi bi-chat-text"></i> Feedback
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- Account Settings Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="accountSettingsDropdownHorizontal" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account Settings">
-            <i class="m-3 bi bi-person-circle"></i> Account Settings
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountSettingsDropdownHorizontal">
-            <li>
-              <a class="dropdown-item" href="users-profile.php">
-                <i class="bi bi-person-circle"></i> My Profile
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#" id="deleteAccountBtn">
-                <i class="bi bi-person-dash"></i> Delete Account
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="mailto:muchinhairiano@gmail.com">
-                <i class="bi bi-question-circle"></i> Need Help
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item logout-btn" href="../config/logout.php" id="logout-button2">
-                <i class="bi bi-box-arrow-right"></i> Logout
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+        <div class="d-flex align-items-center">
+            <!-- Support Dropdown -->
+            <div class="dropdown me-3">
+                <button class="btn btn-link text-white dropdown-toggle" type="button" id="supportDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-question-circle me-1"></i> Support
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdown">
+                    <li><a class="dropdown-item" href="../views/faq.php"><i
+                                class="bi bi-question-circle me-2"></i>FAQ</a></li>
+                    <li><a class="dropdown-item" href="../views/contact.php"><i class="bi bi-envelope me-2"></i>Contact
+                            Us</a></li>
+                    <li><a class="dropdown-item" href="../views/help.php"><i class="bi bi-book me-2"></i>Help Center</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Settings Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-link text-white dropdown-toggle" type="button" id="accountDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle me-1"></i> Account
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                    <li><a class="dropdown-item" href="../views/users-profile.php"><i
+                                class="bi bi-person me-2"></i>Profile</a></li>
+                    <li><a class="dropdown-item" href="../views/notifications.php"><i
+                                class="bi bi-bell me-2"></i>Notifications</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><button class="dropdown-item text-danger" id="logoutBtn"><i
+                                class="bi bi-box-arrow-right me-2"></i>Logout</button></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </nav>
+
+<!-- Desktop Sidebar -->
+<aside class="sidebar d-none d-lg-block">
+    <div class="sidebar-header p-0 m-0">
+        <a href="../views/dashboard.php">
+          <img src="../assets/img/logo.jpg" alt="Elevate Logo"
+           class="logo" style="width: 100%; height: fit-content; background-image: url('../assets/img/logo.jpg'); background-size: cover;">  
+        </a>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="../views/dashboard.php">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-setting.php">
+                    <i class="bi bi-bullseye"></i>
+                    <span>Set New Goal</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/display-goals.php">
+                    <i class="bi bi-list-check"></i>
+                    <span>View All Goals</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/analysis-insights.php">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Progress Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-categories.php">
+                    <i class="bi bi-folder"></i>
+                    <span>Goal Categories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-templates.php">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Goal Templates</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<!-- Mobile Navigation -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileNavLabel">
+            <img src="../assets/img/logo.jpg" alt="Elevate Logo"
+           class="logo" style="width: 100%; background-image: url('../assets/img/logo.jpg'); background-size: cover;">
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="../views/dashboard.php">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-setting.php">
+                    <i class="bi bi-bullseye"></i>
+                    <span>Set New Goal</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/display-goals.php">
+                    <i class="bi bi-list-check"></i>
+                    <span>View All Goals</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/analysis-insights.php">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Progress Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-categories.php">
+                    <i class="bi bi-folder"></i>
+                    <span>Goal Categories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/goal-templates.php">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Goal Templates</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    /* Top Navbar */
+    .top-navbar {
+        height: 60px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1030;
+    }
+
+    .top-navbar .navbar-brand img {
+        height: 40px;
+        width: auto;
+    }
+
+    .top-navbar .btn-link {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+    }
+
+    .top-navbar .dropdown-menu {
+        margin-top: 0.5rem;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-navbar .dropdown-item {
+        padding: 0.5rem 1rem;
+        color: var(--text-color);
+    }
+
+    .top-navbar .dropdown-item:hover {
+        background-color: var(--light-gray);
+        color: var(--accent-color);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 250px;
+        height: calc(100vh - 60px);
+        background-color: var(--surface-color);
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+        z-index: 1020;
+        overflow-y: auto;
+    }
+
+    .sidebar-header {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-header .logo {
+        height: 40px;
+        width: auto;
+    }
+
+    .sidebar-nav {
+        padding: 1rem 0;
+    }
+
+    .sidebar .nav-link {
+        padding: 0.75rem 1.5rem;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar .nav-link i {
+        margin-right: 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    .sidebar .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: var(--accent-color);
+    }
+
+    .sidebar .nav-link.active {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: var(--accent-color);
+    }
+
+    /* Mobile Navigation */
+    .offcanvas {
+        max-width: 250px;
+        z-index: 1040;
+    }
+
+    .offcanvas-header {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .offcanvas-body {
+        padding: 1rem 0;
+    }
+
+    .offcanvas .nav-link {
+        padding: 0.75rem 1.5rem;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .offcanvas .nav-link i {
+        margin-right: 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    .offcanvas .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: var(--accent-color);
+    }
+
+    /* Main Content */
+    .main-content {
+        margin-left: 250px;
+        margin-top: 60px;
+        padding: 2rem;
+        min-height: calc(100vh - 60px);
+        transition: margin-left 0.3s ease;
+        background-color: var(--light-gray);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 991.98px) {
+        .main-content {
+            margin-left: 0;
+            padding: 1rem;
+        }
+
+        .offcanvas-backdrop {
+            z-index: 1035;
+        }
+    }
+</style>
 
 <!-- Required Scripts -->
 <script src="../assets/js/delete-account.js"></script>

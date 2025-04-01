@@ -1,4 +1,4 @@
-<footer id="main-footer" class="lead fs-6 mt-5 full-width-footer">
+<footer id="main-footer" class="lead fs-6 w-100 m-0 ">
     <div class="container">
         <div class="row pt-3">
             <div class="col-xs-12 col-sm-6 col-lg-3">
@@ -21,7 +21,7 @@
             <div class="col-xs-12 col-sm-6 col-lg-3">
                 <h5 class="text-primary">Useful Links</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="../views/index.php">Home</a></li>
+                    <li class="mb-2"><a href="../views/dashboard.php">Home</a></li>
                     <li class="mb-2"><a href="#">About us</a></li>
                     <li class="mb-2"><a href="#">Services</a></li>
                     <li class="mb-2"><a href="#">Terms of service</a></li>

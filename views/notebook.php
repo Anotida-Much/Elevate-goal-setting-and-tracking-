@@ -1,6 +1,6 @@
 <!-- Notebook -->
-<div id="notebook-container" class="bg-white shadow-sm rounded-3 p-3">
-    <!-- Button to trigger modal -->
+<!-- Button to trigger modal -->
+<div class="notebook-container">
     <button id="notebook-btn-custom-position" class="btn btn-primary rounded-pill shadow-md pe-5 py-2 border-0"
         data-bs-toggle="modal" data-bs-target="#notebookModal">
         <i class="bi bi-pencil-square"></i> Open Notebook
@@ -25,7 +25,7 @@
                             <!-- Title input and Quill editor -->
                             <input type="text" id="note-title" class="form-control border-bottom-0" value=""
                                 placeholder="Note Title" required>
-                            <div id="quill-editor" style="height: 250px;"></div>
+                            <div id="quill-editor" class="quill-editor" style="height: 380px;"></div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,13 @@
         </div>
     </div>
 </div>
-
-<!-- Required Scripts -->
-<script src="../node_modules/quill/dist/quill.js"></script>
+<!-- Scripts -->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../node_modules/quill/dist/quill.min.js"></script>
 <script src="../assets/js/notebook.js"></script>
+<script>
+    // Initialize Quill editor
+    const quill = new Quill('#quill-editor', {
+        theme: 'snow'
+    });
+</script>

@@ -7,6 +7,6 @@ ob_start();
         // destroy the session
         session_destroy();
 
-        header('Location: ../views/login.php'); // Updated to point to the correct login page
+        header('Location: ../index.php');
     ob_end_flush(); 
     exit;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../config/display-goals-config.php';
-require_once 'navbar.php';
+require_once '../views/navbar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -214,7 +214,7 @@ require_once 'navbar.php';
 
 
 <body>
-    <div class="row position-relative mt-5 pt-5">
+    <div class="row position-relative">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-end gap-2 w-100">
 
             <!-- Search Bar -->
@@ -265,117 +265,120 @@ require_once 'navbar.php';
             </div>
         </div>
     </div>
-    <!-- Goal Container -->
-    <main class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="row g-4" id="goals-container">
-                    <?php foreach ($goal_data as $data) {
-                        $statusClass = strtolower(str_replace(' ', '-', $data['goal_status']));
-                        ?>
-                        <!-- beginning of goal container -->
-                        <article class="col-md-6">
-                            <div class="card h-100 <?php echo $statusClass; ?>">
-                                <header class="card-body d-flex">
-                                    <img src="../assets/img/goal.png" alt="Goal Image" class="rounded" width="50"
-                                        height="50">
-                                    <div class="flex-grow-1 mx-3">
-                                        <h4 class="card-title" id="card-title" goal-id="<?= $data['goal']['id'] ?>">
-                                            <?= $data['goal']['goal_name'] ?>
-                                        </h4>
-                                        <p class="card-text overflow-auto">
-                                            <?= $data['goal']['goal_description'] ?>
-                                        </p>
-                                    </div>
-                                    <!-- Dropdown menu content -->
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-primary" type="button" id="goalOptions"
-                                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Options">
-                                            <i class="bi bi-three-dots fs-3"></i>
-                                        </button>
-                                        <ul class="dropdown-menu text-light" aria-labelledby="goalOptions">
-                                            <li><a class="dropdown-item" href="#" aria-label="add-tasks"><i
-                                                        class="bi bi-plus-circle-fill"></i> Add More Tasks</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="pause"><i
-                                                        class="bi bi-pause-circle-fill"></i> Pause Goal</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="resume"><i
-                                                        class="bi bi-arrow-clockwise"></i> Resume Goal</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="reschedule"><i
-                                                        class="bi bi-calendar-plus-fill"></i> Reschedule Goal</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="mark-complete"><i
-                                                        class="bi bi-check-circle-fill"></i> Mark as complete</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="share"><i
-                                                        class="bi bi-share-fill"></i> Share Goal</a></li>
-                                            <li><a class="dropdown-item" href="#" aria-label="update"><i
-                                                        class="bi bi-pencil-fill"></i> Edit Goal</a></li>
-                                            <li><a class="dropdown-item text-warning" href="#" aria-label="missed"><i
-                                                        class="bi bi-exclamation-circle-fill"></i> Mark As Missed</a></li>
-                                            <li><a class="dropdown-item text-danger" href="#" aria-label="delete"><i
-                                                        class="bi bi-trash-fill"></i> Delete Goal</a></li>
-                                        </ul>
-                                    </div>
-                                </header>
-                                <section class="card-body border">
-                                    <span id="task-status"></span>
-                                    <!-- Task Container -->
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>Tasks</h5>
-                                            <div class="task-container">
-                                                <ul class="task-list list-unstyled">
-                                                    <?php foreach ($data['tasks'] as $task) { ?>
-                                                        <li class="task <?= $task['completed'] ? 'completed' : '' ?>">
-                                                            <input type="checkbox" id="<?= $task['id'] ?>"
-                                                                aria-label="<?= $task['task_name'] ?>" <?= $task['completed'] ? 'checked' : '' ?>>
-                                                            <label for="<?= $task['id'] ?>">
-                                                                <?= $task['task_name'] ?>
-                                                            </label>
-                                                        </li>
-                                                    <?php } ?>
-                                                </ul>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Goal Container -->
+        <main class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row g-4" id="goals-container">
+                        <?php foreach ($goal_data as $data) {
+                            $statusClass = strtolower(str_replace(' ', '-', $data['goal_status']));
+                            ?>
+                            <!-- beginning of goal container -->
+                            <article class="col-md-6">
+                                <div class="card h-100 <?php echo $statusClass; ?>">
+                                    <header class="card-body d-flex">
+                                        <img src="../assets/img/goal.png" alt="Goal Image" class="rounded" width="50"
+                                            height="50">
+                                        <div class="flex-grow-1 mx-3">
+                                            <h4 class="card-title" id="card-title" goal-id="<?= $data['goal']['id'] ?>">
+                                                <?= $data['goal']['goal_name'] ?>
+                                            </h4>
+                                            <p class="card-text overflow-auto">
+                                                <?= $data['goal']['goal_description'] ?>
+                                            </p>
+                                        </div>
+                                        <!-- Dropdown menu content -->
+                                        <div class="dropdown position-fixed-end">
+                                            <button class="btn btn-outline-primary" type="button" id="goalOptions"
+                                                data-bs-toggle="dropdown" aria-expanded="false" aria-label="Goal Options">
+                                                <i class="bi bi-three-dots fs-3"></i>
+                                            </button>
+                                            <ul class="dropdown-menu text-light" aria-labelledby="goalOptions">
+                                                <li><a class="dropdown-item" href="#" aria-label="add-tasks"><i
+                                                            class="bi bi-plus-circle-fill"></i> Add More Tasks</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="pause"><i
+                                                            class="bi bi-pause-circle-fill"></i> Pause Goal</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="resume"><i
+                                                            class="bi bi-arrow-clockwise"></i> Resume Goal</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="reschedule"><i
+                                                            class="bi bi-calendar-plus-fill"></i> Reschedule Goal</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="mark-complete"><i
+                                                            class="bi bi-check-circle-fill"></i> Mark as complete</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="share"><i
+                                                            class="bi bi-share-fill"></i> Share Goal</a></li>
+                                                <li><a class="dropdown-item" href="#" aria-label="update"><i
+                                                            class="bi bi-pencil-fill"></i> Edit Goal</a></li>
+                                                <li><a class="dropdown-item text-warning" href="#" aria-label="missed"><i
+                                                            class="bi bi-exclamation-circle-fill"></i> Mark As Missed</a></li>
+                                                <li><a class="dropdown-item text-danger" href="#" aria-label="delete"><i
+                                                            class="bi bi-trash-fill"></i> Delete Goal</a></li>
+                                            </ul>
+                                        </div>
+                                    </header>
+                                    <section class="card-body border">
+                                        <span id="task-status"></span>
+                                        <!-- Task Container -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5>Tasks</h5>
+                                                <div class="task-container">
+                                                    <ul class="task-list list-unstyled">
+                                                        <?php foreach ($data['tasks'] as $task) { ?>
+                                                            <li class="task <?= $task['completed'] ? 'completed' : '' ?>">
+                                                                <input type="checkbox" id="<?= $task['id'] ?>"
+                                                                    aria-label="<?= $task['task_name'] ?>" <?= $task['completed'] ? 'checked' : '' ?>>
+                                                                <label for="<?= $task['id'] ?>">
+                                                                    <?= $task['task_name'] ?>
+                                                                </label>
+                                                            </li>
+                                                        <?php } ?>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="progress col-10 offset-1 mt-3">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" style="width: 0%;">0%</div>
                                             </div>
                                         </div>
-                                        <div class="progress col-10 offset-1 mt-3">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                role="progressbar" style="width: 0%;">0%</div>
+                                    </section>
+                                    <footer class="card-footer d-flex justify-content-between align-items-center w-100">
+                                        <div class="col">
+                                            <span><?= $data['goal']['goal_category'] ?></span>
                                         </div>
-                                    </div>
-                                </section>
-                                <footer class="card-footer d-flex justify-content-between align-items-center w-100">
-                                    <div class="col">
-                                        <span><?= $data['goal']['goal_category'] ?></span>
-                                    </div>
-                                    <div class="col">
-                                        <span>Due Date: <?= $data['goal']['target_date'] ?></span>
-                                    </div>
-                                    <div class="col" id="goal-status">
-                                        <span class="badge float-end bg-info w-75 py-3"><?= $data['goal_status'] ?></span>
-                                    </div>
-                                </footer>
-                            </div>
-                        </article>
-                    <?php } ?>
+                                        <div class="col">
+                                            <span>Due Date: <?= $data['goal']['target_date'] ?></span>
+                                        </div>
+                                        <div class="col" id="goal-status">
+                                            <span class="badge float-end bg-info w-75 py-3"><?= $data['goal_status'] ?></span>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </article>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <!-- Footer -->
-    <?php include "footer.php" ?>
+        <!-- Footer -->
+        <?php include "footer.php" ?>
 
-    <!-- Notebook -->
-    <?php include "notebook.php" ?>
+        <!-- Notebook -->
+        <?php include "notebook.php" ?>
 
-    <!-- Vendor Scripts -->
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../node_modules/aos/dist/aos.js"></script>
-    <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
-    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <!-- Vendor Scripts -->
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../node_modules/aos/dist/aos.js"></script>
+        <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
+        <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
-    <!-- Custom Scripts -->
-    <script src="../assets/js/notifications.js"></script>
-    <script src="../assets/js/display.js"></script>
-    <script src="../assets/js/goal-filters.js"></script>
+        <!-- Custom Scripts -->
+        <script src="../assets/js/notifications.js"></script>
+        <script src="../assets/js/display.js"></script>
+        <script src="../assets/js/goal-filters.js"></script>
+    </div>
 </body>
 
 </html>
