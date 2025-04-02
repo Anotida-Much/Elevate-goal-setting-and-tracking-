@@ -10,12 +10,9 @@
   <meta name="author" content="Anotida Muchinhairi">
 
   <link rel="shortcut icon" href="../assets/img/logo.jpg" type="image/x-icon">
-  <!-- Bootstrap CSS -->
   <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
   <title>Elevate - My Profile</title>
@@ -74,7 +71,8 @@
                       Password</button>
                   </li>
                   <li class="nav-item">
-                    <button class="nav-link text-danger" data-bs-toggle="tab" data-bs-target="#profile-delete-account">Delete
+                    <button class="nav-link text-danger" data-bs-toggle="tab"
+                      data-bs-target="#profile-delete-account">Delete
                       Account</button>
                   </li>
                 </ul>
@@ -226,11 +224,13 @@
                       <div class="row mb-3">
                         <label for="deletePassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="deletePassword" type="password" class="form-control" id="deletePassword" required>
+                          <input name="deletePassword" type="password" class="form-control" id="deletePassword"
+                            required>
                         </div>
                       </div>
                       <div class="row mb-3">
-                        <label for="deleteConfirm" class="col-md-4 col-lg-3 col-form-label">Type "DELETE" to confirm</label>
+                        <label for="deleteConfirm" class="col-md-4 col-lg-3 col-form-label">Type "DELETE" to
+                          confirm</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="deleteConfirm" type="text" class="form-control" id="deleteConfirm" required>
                         </div>
@@ -248,8 +248,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
-    <?php include "footer.php" ?>
 
     <!-- Vendor Scripts -->
     <script src="/Elevate/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -257,9 +255,11 @@
     <script src="/Elevate/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="/Elevate/assets/js/main.js"></script>
-    <script src="/Elevate/assets/js/profile.js"></script>
-    <script src="/Elevate/assets/js/delete-account.js"></script>
+    <script src="/Elevate/assets/js/notifications.js"></script>
+    <script src="/Elevate/assets/js/user-profile.js"></script>
+
+    <!-- Footer -->
+    <?php include "footer.php" ?>
   </div>
 </body>
 

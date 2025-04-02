@@ -20,11 +20,13 @@ if (empty($password)) {
 
 // Verify password
 $user_id = $_SESSION['user_id'];
-$stmt = $conn->prepare("SELECT password FROM users WHERE id = ?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+
+$query = "SELECT password FROM users WHERE id = ?";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$user = mysqli_fetch_assoc($result);
 
 if (!$user || !password_verify($password, $user['password'])) {
     echo json_encode(['status' => 'error', 'message' => 'Invalid password']);
@@ -32,31 +34,29 @@ if (!$user || !password_verify($password, $user['password'])) {
 }
 
 // Begin transaction to delete all user data
-$conn->begin_transaction();
+mysqli_begin_transaction($conn);
 
 try {
     // Delete user's goals
-    $stmt = $conn->prepare("DELETE FROM goals WHERE user_id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-
-    // Delete user's tasks
-    $stmt = $conn->prepare("DELETE FROM tasks WHERE user_id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
+    $query = "DELETE FROM goals WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
 
     // Delete user's notes
-    $stmt = $conn->prepare("DELETE FROM notes WHERE user_id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
+    $query = "DELETE FROM notes WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
 
     // Finally, delete the user account
-    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
+    $query = "DELETE FROM users WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
 
     // Commit transaction
-    $conn->commit();
+    mysqli_commit($conn);
 
     // Clear session
     session_destroy();
@@ -64,8 +64,8 @@ try {
     echo json_encode(['status' => 'success', 'message' => 'Account deleted successfully']);
 } catch (Exception $e) {
     // Rollback transaction on error
-    $conn->rollback();
+    mysqli_rollback($conn);
     echo json_encode(['status' => 'error', 'message' => 'Failed to delete account: ' . $e->getMessage()]);
 }
 
-$conn->close(); 
+mysqli_close($conn);

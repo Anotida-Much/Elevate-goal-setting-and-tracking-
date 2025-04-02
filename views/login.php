@@ -67,11 +67,7 @@ if (isset($_SESSION['username'])) {
                 }
 
                 // Display errors or login user
-                if (!empty($errors)) {
-                    foreach ($errors as $error) {
-                        echo '<p style="color:red;">' . $error . '</p>';
-                    }
-                } else {
+                if (empty($errors)) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];

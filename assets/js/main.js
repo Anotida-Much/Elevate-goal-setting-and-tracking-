@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Displaying Quotes
+document.addEventListener("DOMContentLoaded", () => {
+// Displaying Quotes
   const quotes = [
     {
       saying: "Believe you can and you're halfway there.",
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
       author: "Aristotle",
     },
     {
-      saying: "Life shrinks or expands in proportion to one’s courage.",
+      saying: "Life shrinks or expands in proportion to one's courage.",
       author: "Anais Nin",
     },
     {
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
       author: "Nelson Mandela",
     },
     {
-      saying: "Don’t count the days, make the days count.",
+      saying: "Don't count the days, make the days count.",
       author: "Muhammad Ali",
     },
     {
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       saying:
-        "Never allow a person to tell you no who doesn’t have the power to say yes.",
+        "Never allow a person to tell you no who doesn't have the power to say yes.",
       author: "Eleanor Roosevelt",
     },
     {
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
       author: "Oscar Wilde",
     },
     {
-      saying: "You define beauty yourself, society doesn’t define your beauty.",
+      saying: "You define beauty yourself, society doesn't define your beauty.",
       author: "Lady Gaga",
     },
     {
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       saying:
-        "You just gotta keep going and fighting for everything, and one day you’ll get to where you want.",
+        "You just gotta keep going and fighting for everything, and one day you'll get to where you want.",
       author: "Naomi Osaka",
     },
     {
@@ -284,33 +284,6 @@ function calculateDays() {
 document.addEventListener("DOMContentLoaded", () => {
   calculateDays();
 });
+
 setInterval(calculateDays, 86400000); // 86400000 milliseconds = 1 day
 
-// Set the idle timeout (10 minutes)
-const timeout = 10 * 60 * 1000;
-let timer = setTimeout(logoutUser, timeout);
-
-document.getElementById("logoutBtn").addEventListener("click", logoutUser);
-
-document.addEventListener("mousemove", resetTimer);
-document.addEventListener("keydown", resetTimer);
-document.addEventListener("scroll", resetTimer);
-document.addEventListener("click", resetTimer);
-
-function resetTimer() {
-  clearTimeout(timer);
-  timer = setTimeout(logoutUser, timeout);
-}
-
-async function logoutUser() {
-  try {
-    const response = await fetch("../config/logout.php");
-    if (response.ok) {
-      window.location.href = "../index.php";
-    } else {
-      console.error("Failed to log out user:", response.status);
-    }
-  } catch (error) {
-    console.error("Error logging out user:", error.message);
-  }
-}
