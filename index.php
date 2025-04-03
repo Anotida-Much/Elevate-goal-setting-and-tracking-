@@ -10,6 +10,10 @@
     <meta name="author" content="Anotida Muchinhairi">
     <title>Elevate - Transform Your Dreams into Reality</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Local CSS Libraries -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,7 +30,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--dark-color);
         }
 
@@ -71,8 +75,9 @@
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-family: 'Poppins', sans-serif;
             font-weight: 800;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -80,6 +85,8 @@
         }
 
         .hero-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
             font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0.9;
@@ -160,8 +167,8 @@
         }
 
         .feature-icon-wrapper {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -261,13 +268,16 @@
         }
 
         .cta-title {
-            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
             font-weight: 800;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .cta-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
             font-size: 1.5rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
@@ -277,9 +287,10 @@
         }
 
         .btn {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
             padding: 1rem 2rem;
             border-radius: 50px;
-            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -309,6 +320,7 @@
             position: relative;
             display: inline-block;
             margin-bottom: 3rem;
+            font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 2.5rem;
         }
@@ -395,8 +407,8 @@
         }
 
         footer h5 {
-            color: white;
-            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             margin-bottom: 1.5rem;
             font-size: 1.25rem;
             position: relative;
@@ -413,7 +425,10 @@
             background: var(--primary-color);
         }
 
-        footer p {
+        footer p,
+        footer a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
         }
@@ -500,8 +515,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="assets/img/logo.jpg" alt="Elevate Logo" height="40" class="me-2">
-                <span class="fw-bold text-primary">Elevate</span>
+                <img src="assets/img/logo.jpg" alt="Elevate Logo" height="40" class="me-2 rounded-circle" style="width: 60px; height: 60px">
+                <span class="fw-bold fs-3 text-primary">Elevate</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -539,14 +554,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content text-white" data-aos="fade-right">
-                    <h1 class="display-4 fw-bold mb-4">Transform Your Dreams into Reality</h1>
+                    <h1 class="display-5 fw-bold mb-4">Transform Your Dreams into Reality</h1>
                     <p class="lead mb-4">Join thousands of achievers who are setting, tracking, and accomplishing their
                         goals with Elevate. Start your journey to success today.</p>
                     <div class="d-flex gap-3 mb-4">
-                        <a href="views/sign-up.php" class="btn btn-light">Start Free Trial</a>
+                        <a href="views/sign-up.php" class="btn btn-light">Start For Free</a>
                         <a href="#features" class="btn btn-outline-light">See How It Works</a>
                     </div>
-                    <div class="social-proof p-4">
+                    <div class="social-proof p-4 gap-3">
                         <div class="row g-4">
                             <div class="col-4">
                                 <div class="text-center">
@@ -562,7 +577,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="text-center">
-                                    <div class="display-6 fw-bold">4.9/5</div>
+                                    <div class="display-6 fw-bold">4.7/5</div>
                                     <div class="small">User Rating</div>
                                 </div>
                             </div>
@@ -570,8 +585,35 @@
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="assets/img/Achievement.png" title="Achievement" alt="Elevate Dashboard Preview"
-                        class="img-fluid rounded shadow-lg">
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                                class="active"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner rounded shadow-lg">
+                            <div class="carousel-item active">
+                                <img src="assets/img/stats.png" class="d-block w-100" alt="Elevate Dashboard Preview">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/insights.png" class="d-block w-100" alt="Goal Tracking Preview">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/graphs.png" class="d-block w-100" alt="Analytics Preview">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -590,7 +632,7 @@
                         <div class="card-body text-center p-4">
                             <div
                                 class="feature-icon-wrapper d-flex align-items-center justify-content-center mx-auto mb-4">
-                                <i class="bi bi-bullseye fs-1 text-primary"></i>
+                                <i class="bi bi-bullseye fs-3 text-primary"></i>
                             </div>
                             <h3 class="h4 mb-3">Smart Goal Setting</h3>
                             <p class="text-muted mb-0">Set clear, achievable goals with our intuitive interface. Break
@@ -603,7 +645,7 @@
                         <div class="card-body text-center p-4">
                             <div
                                 class="feature-icon-wrapper d-flex align-items-center justify-content-center mx-auto mb-4">
-                                <i class="bi bi-graph-up fs-1 text-primary"></i>
+                                <i class="bi bi-graph-up fs-3 text-primary"></i>
                             </div>
                             <h3 class="h4 mb-3">Progress Tracking</h3>
                             <p class="text-muted mb-0">Monitor your achievements with detailed analytics and visual
@@ -616,7 +658,7 @@
                         <div class="card-body text-center p-4">
                             <div
                                 class="feature-icon-wrapper d-flex align-items-center justify-content-center mx-auto mb-4">
-                                <i class="bi bi-bell fs-1 text-primary"></i>
+                                <i class="bi bi-bell fs-3 text-primary"></i>
                             </div>
                             <h3 class="h4 mb-3">Smart Reminders</h3>
                             <p class="text-muted mb-0">Never miss a deadline with customizable reminders and
@@ -641,15 +683,15 @@
                         <div class="card-body text-center p-4">
                             <div class="position-relative mb-4">
                                 <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto"
-                                    style="width: 80px; height: 80px;">
-                                    <span class="display-4">1</span>
+                                    style="width: 60px; height: 60px;">
+                                    <span class="display-6">1</span>
                                 </div>
                             </div>
                             <h3 class="h4 mb-3">Set Your Goals</h3>
                             <p class="text-muted">Create clear, actionable goals with our intuitive interface. Break
                                 down big dreams into manageable steps.</p>
                             <div class="mt-3">
-                                <img src="assets/img/goal-setting-preview.png" alt="Goal Setting Preview"
+                                <img src="assets/img/set-goal.png" alt="Goal Setting Preview"
                                     class="img-fluid rounded shadow-sm" style="max-height: 200px;">
                             </div>
                         </div>
@@ -660,15 +702,15 @@
                         <div class="card-body text-center p-4">
                             <div class="position-relative mb-4">
                                 <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto"
-                                    style="width: 80px; height: 80px;">
-                                    <span class="display-4">2</span>
+                                    style="width: 60px; height: 60px;">
+                                    <span class="display-6">2</span>
                                 </div>
                             </div>
                             <h3 class="h4 mb-3">Track Progress</h3>
                             <p class="text-muted">Monitor your achievements with visual progress indicators and detailed
                                 analytics to stay motivated.</p>
                             <div class="mt-3">
-                                <img src="assets/img/progress-tracking-preview.png" alt="Progress Tracking Preview"
+                                <img src="assets/img/goals2.png" alt="Progress Tracking Preview"
                                     class="img-fluid rounded shadow-sm" style="max-height: 200px;">
                             </div>
                         </div>
@@ -679,15 +721,15 @@
                         <div class="card-body text-center p-4">
                             <div class="position-relative mb-4">
                                 <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto"
-                                    style="width: 80px; height: 80px;">
-                                    <span class="display-4">3</span>
+                                    style="width: 60px; height: 60px;">
+                                    <span class="display-6">3</span>
                                 </div>
                             </div>
                             <h3 class="h4 mb-3">Achieve Success</h3>
                             <p class="text-muted">Celebrate milestones, adjust strategies, and watch your dreams become
                                 reality with our supportive platform.</p>
                             <div class="mt-3">
-                                <img src="assets/img/achievement-preview.png" alt="Achievement Preview"
+                                <img src="assets/img/insights.png" alt="Achievement Preview"
                                     class="img-fluid rounded shadow-sm" style="max-height: 200px;">
                             </div>
                         </div>
@@ -712,9 +754,9 @@
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="testimonial-card shadow-sm">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="assets/img/testimonial1.jpg" alt="User Avatar" class="testimonial-avatar me-3">
+                            <img src="assets/img/Emma.jpg" alt="User Avatar" class="testimonial-avatar me-3">
                             <div>
-                                <h5 class="mb-0">Sarah Johnson</h5>
+                                <h5 class="mb-0">Sarah M</h5>
                                 <p class="text-muted mb-0">Entrepreneur</p>
                             </div>
                         </div>
@@ -732,7 +774,7 @@
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="testimonial-card shadow-sm">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="assets/img/testimonial2.jpg" alt="User Avatar" class="testimonial-avatar me-3">
+                            <img src="assets/img/Michael.png" alt="User Avatar" class="testimonial-avatar me-3">
                             <div>
                                 <h5 class="mb-0">Michael Chen</h5>
                                 <p class="text-muted mb-0">Professional Athlete</p>
@@ -752,7 +794,7 @@
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="testimonial-card shadow-sm">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="assets/img/testimonial3.jpg" alt="User Avatar" class="testimonial-avatar me-3">
+                            <img src="assets/img/Sarah.jpg" alt="User Avatar" class="testimonial-avatar me-3">
                             <div>
                                 <h5 class="mb-0">Emma Davis</h5>
                                 <p class="text-muted mb-0">Student</p>
@@ -821,8 +863,8 @@
                     <ul>
                         <li><a href="mailto:info@elevate.com"><i class="bi bi-envelope me-2"></i>info@elevate.com</a>
                         </li>
-                        <li><a href="tel:+15551234567"><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</a></li>
-                        <li><i class="bi bi-geo-alt me-2"></i>123 Success Street, NY</li>
+                        <li><a href="tel:+15551234567"><i class="bi bi-telephone me-2"></i>+263 715750849</a></li>
+                        <li><i class="bi bi-geo-alt me-2"></i>Harare, Zimbabwe</li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
