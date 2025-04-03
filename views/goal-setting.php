@@ -96,14 +96,14 @@
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label for="target-date" class="form-label">Target Date:</label>
-                                            <input type="date" name="target-date" class="form-control" id="target-date"
-                                                required />
-                                        </div>
-                                        <div class="col-md-6 mb-3">
                                             <label for="starting-date" class="form-label">Starting Date:</label>
                                             <input type="date" name="starting-date" class="form-control"
-                                                id="starting-date" required />
+                                            id="starting-date" required />
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="target-date" class="form-label">Due Date:</label>
+                                            <input type="date" name="target-date" class="form-control" id="target-date"
+                                                required />
                                         </div>
                                     </div>
 
@@ -195,6 +195,7 @@
 
             <!-- Custom Scripts -->
             <script src="/Elevate/assets/js/goal-setting.js"></script>
+            <script src="/Elevate/assets/js/notifications.js"></script>
         </div>
         <!-- Footer -->
         <?php include "footer.php" ?>
@@ -224,18 +225,32 @@
                 .then(data => {
                     // Handle the response data
                     if (data.status === 'success') {
-                        showSuccess('Goal saved successfully!');
+                        showSuccess(data.message);
+                        // Clear the form
                         form.reset();
+                        
+                        // Clear tasks list and tasks array
+                        const tasksList = document.getElementById('tasks-list');
+                        const tasksInput = document.getElementById('tasks');
+                        tasksList.innerHTML = '';
+                        tasksInput.value = '[]';
+                        
+                        // Clear any specific target fields if they exist
+                        const numericTarget = document.getElementById('numeric-target');
+                        const startingValue = document.getElementById('starting-value');
+                        const unit = document.getElementById('unit');
+                        if (numericTarget) numericTarget.value = '';
+                        if (startingValue) startingValue.value = '';
+                        if (unit) unit.value = '';
                     } else {
-                        showError('An error occurred: ' + data.message);
+                        showError(data.message || 'An error occurred while saving the goal');                       
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    showError('An error occurred while saving the goal: ' + error.message);
+                    showError('An error occurred while saving the goal');
                 });
         }
-
     </script>
 </body>
 

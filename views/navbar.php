@@ -53,7 +53,7 @@
 </nav>
 
 <!-- Desktop Sidebar -->
-<aside class="sidebar d-none d-lg-block">
+<aside class="sidebar d-none d-lg-block shadow-lg">
     <div class="sidebar-header p-0 m-0">
         <a href="/Elevate/views/dashboard.php">
             <img src="/Elevate/assets/img/logo.jpg" alt="Elevate Logo" class="logo"
