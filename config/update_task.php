@@ -49,6 +49,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ii", $progress_percentage, $goal_id);
         $stmt->execute();
 
+        // Get goal's due date, start date and current status
+        $query = "SELECT g.target_date, g.starting_date, gs.status 
+                 FROM goals g 
+                 LEFT JOIN goal_status gs ON g.id = gs.goal_id 
+                 WHERE g.id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $goal_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $goal_data = $result->fetch_assoc();
+        $target_date = $goal_data['target_date'];
+        $start_date = $goal_data['starting_date'];
+        $current_status = $goal_data['status'];
+
+        // Check if goal has started
+        $current_date = date('Y-m-d');
+        if ($current_date < $start_date) {
+            echo json_encode(['status' => 'error', 'message' => 'This goal has not started yet']);
+            exit;
+        }
+
+        // Determine new status based on progress and due date
+        $new_status = $current_status;
+
+        if ($progress_percentage == 100) {
+            $new_status = 'COMPLETED';
+        } else if ($current_date > $target_date) {
+            $new_status = 'MISSED';
+        } else if ($completed_tasks > 0) {
+            $new_status = 'IN_PROGRESS';
+        }
+
+        // Update goal status if it has changed
+        if ($new_status !== $current_status) {
+            $query = "UPDATE goal_status SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE goal_id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("si", $new_status, $goal_id);
+            $stmt->execute();
+        }
+
         echo json_encode(['status' => 'success']);
     } catch (Exception $e) {
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);

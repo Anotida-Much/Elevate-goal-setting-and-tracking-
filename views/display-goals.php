@@ -172,11 +172,14 @@ require_once '../views/navbar.php';
             background-color: #f8f9fa;
             border-radius: 4px;
             border: 1px solid #dee2e6;
+            position: relative;
         }
 
         .task-list input[type="checkbox"] {
             margin-right: 0.5rem;
             flex-shrink: 0;
+            position: relative;
+            z-index: 2;
         }
 
         .task-list label {
@@ -187,6 +190,23 @@ require_once '../views/navbar.php';
             padding: 0;
             line-height: 1.2;
             max-width: 200px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .task-list li:hover label {
+            white-space: normal;
+            overflow: visible;
+            position: absolute;
+            left: 2rem;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 0.5rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 300px;
         }
 
         .task.completed label {
@@ -196,6 +216,15 @@ require_once '../views/navbar.php';
 
         .task.completed {
             background-color: #e9ecef;
+        }
+
+        .task.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .task.disabled input[type="checkbox"] {
+            cursor: not-allowed;
         }
 
         .card-text {
@@ -281,10 +310,10 @@ require_once '../views/navbar.php';
                                         <header class="card-body d-flex">
                                             <img src="../assets/img/goal.png" alt="Goal Image" class="rounded" width="50"
                                                 height="50">
-                                            <div class="flex-grow-1 mx-3">
-                                                <h4 class="card-title" id="card-title" goal-id="<?= $data['goal']['id'] ?>">
+                                            <div class="flex-grow-1 px-2">
+                                                <h5 class="card-title" id="card-title" goal-id="<?= $data['goal']['id'] ?>">
                                                     <?= $data['goal']['goal_name'] ?>
-                                                </h4>
+                                                </h5>
                                                 <p class="card-text overflow-auto">
                                                     <?= $data['goal']['goal_description'] ?>
                                                 </p>
@@ -329,15 +358,19 @@ require_once '../views/navbar.php';
                                             <!-- Task Container -->
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <h5>Tasks</h5>
+                                                    <h6>Tasks</h6>
                                                     <div class="task-container">
                                                         <ul class="task-list list-unstyled">
-                                                            <?php foreach ($data['tasks'] as $task) { ?>
-                                                                <li class="task <?= $task['completed'] ? 'completed' : '' ?>">
+                                                            <?php foreach ($data['tasks'] as $task) { 
+                                                                $current_date = date('Y-m-d');
+                                                                $is_disabled = $current_date < $data['goal']['start_date'];
+                                                                ?>
+                                                                <li class="task <?= $task['completed'] ? 'completed' : '' ?> <?= $is_disabled ? 'disabled' : '' ?> col-md-5">
                                                                     <input type="checkbox" id="<?= $task['id'] ?>"
                                                                         aria-label="<?= $task['task_name'] ?>"
-                                                                        <?= $task['completed'] ? 'checked' : '' ?>>
-                                                                    <label for="<?= $task['id'] ?>">
+                                                                        <?= $task['completed'] ? 'checked' : '' ?>
+                                                                        <?= $is_disabled ? 'disabled' : '' ?>>
+                                                                    <label for="<?= $task['id'] ?>" style="font-size: 14px;">
                                                                         <?= $task['task_name'] ?>
                                                                     </label>
                                                                 </li>

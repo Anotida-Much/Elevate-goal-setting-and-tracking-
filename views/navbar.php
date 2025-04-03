@@ -7,7 +7,7 @@
                 <i class="bi bi-list fs-4"></i>
             </button>
             <a class="navbar-brand d-none d-lg-block logo" href="/Elevate/views/dashboard.php">
-                <img src="/Elevate/assets/img/logo.jpg" alt="Elevate Logo" class="rounded-circle" style="height: 40px;">
+                <img src="/Elevate/assets/img/logo.jpg" alt="Elevate Logo" class="rounded" style="height: 40px;">
             </a>
         </div>
 
@@ -187,7 +187,13 @@
         color: var(--accent-color);
     }
 
+    
+
     /* Sidebar */
+    .sidebar .bi {
+        font-size: 1.5rem;
+        color: #0d6efd;
+    }
     .sidebar {
         position: fixed;
         top: 60px;
@@ -233,8 +239,13 @@
     }
 
     .sidebar .nav-link.active {
-        background-color: rgba(0, 0, 0, 0.1);
-        color: var(--accent-color);
+        background-color: rgba(13, 110, 253, 0.1);
+        color: #0d6efd;
+        border-left: 3px solid #0d6efd;
+    }
+
+    .sidebar .nav-link.active i {
+        color: #0d6efd;
     }
 
     /* Mobile Navigation */
@@ -270,6 +281,15 @@
         color: var(--accent-color);
     }
 
+    .offcanvas .nav-link.active {
+        background-color: rgba(13, 110, 253, 0.1);
+        color: #0d6efd;
+        border-left: 3px solid #0d6efd;
+    }
+
+    .offcanvas .nav-link.active i {
+        color: #0d6efd;
+    }
 
     /* Container Spacing */
     .container-fluid {

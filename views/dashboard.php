@@ -219,7 +219,7 @@ require_once '../config/auth.php';
       <!-- Motivation Section -->
       <section id="motivation" class="motivation container-fluid border border-1 shadow-sm rounded-4 p-2 mb-3 bg-white">
         <div class="container section-title text-center">
-          <h3 class="text-primary">Daily Inspiration</h3>
+          <h3 class="text-primary">Insights and Daily Inspiration</h3>
           <p>Stay motivated with daily quotes and insights</p>
         </div>
 
